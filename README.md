@@ -1,4 +1,4 @@
-# Sistem Informasi Kegitatan Mahasiswa (SIKM)
+# Sistem Informasi Kegiatan Mahasiswa (SIKM)
  Sistem Informasi Kegiatan Mahasiswa (SIKM) adalah aplikasi berbasis web yang dibuat untuk mengintegrasi Unit Kegiatan Mahasiswa(UKM) yang ada di USK.
  
 ### Anggota Kelompok
@@ -24,7 +24,7 @@ Atur konfigurasi databasenya di dalam file .env, sebelum itu jalankan dibawah in
 
     cp .env.example .env
 
-## Menjalankan Website PETA
+## Menjalankan Website SIKM
  Akun Admin
  
     email = admin@gmail.com
