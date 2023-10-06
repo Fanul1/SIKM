@@ -135,13 +135,13 @@
             <h2 class="mb-4 md:mb-0 md:mr-4 font-bold">Kontak</h2>
             <p class="text-sm">
                 <span class="flex items-center">
-                    <img src="assets/phone.SVG" alt="Logo" class="w-3 h-3 mr-2">
+                    <img src="assets/phone.png" alt="Logo" class="w-3 h-3 mr-2">
                     <span>089515090480</span>
                 </span>
             </p>
             <p class="text-sm">
                 <span class="flex items-center">
-                    <img src="assets/email.SVG" alt="Logo" class="w-3 h-3 mr-2">
+                    <img src="assets/email.png" alt="Logo" class="w-3 h-3 mr-2">
                     <span>sikm.usk@gmail.com</span>
                 </span>
             </p>
@@ -157,15 +157,15 @@
         <div class="flex items-center justify-center">
             <!-- Logo GitHub -->
             <a href="https://github.com/username" class="hover:text-gray-400 mx-4" target="_blank">
-                <img src="assets/github-mark-white.png" alt="GitHub" class="w-6 h-auto">
+                <img src="assets/github.png" alt="GitHub" class="w-6 h-auto">
             </a>
             <!-- Logo Facebook -->
             <a href="https://facebook.com/username" class="text-white hover:text-gray-400 mx-4" target="_blank">
-                <img src="assets/facebook.svg" alt="Facebook" class="w-6 h-auto">
+                <img src="assets/facebook.png" alt="Facebook" class="w-6 h-auto">
             </a>
             <!-- Logo Instagram -->
             <a href="https://instagram.com/username" class="text-white hover:text-gray-400 mx-4" target="_blank">
-                <img src="assets/instagram.svg" alt="Instagram" class="w-6 h-auto">
+                <img src="assets/instagram.png" alt="Instagram" class="w-6 h-auto">
             </a>
         </div>
 
