@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\SikmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -8,11 +10,17 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
+| routes /loginare loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-});
+Route::get('sikm', [SikmController::class, 'home']);
+Route::get('/', [SikmController::class, 'home']);
+
+Route::get('sikm/login', [SikmController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [SikmController::class, 'authenticate']);
+Route::post('/logout', [SikmController::class, 'logout']);
+
+Route::get('sikm/register', [SikmController::class, 'register'])->middleware('guest');
+Route::post('sikm/register', [SikmController::class, 'store']);
