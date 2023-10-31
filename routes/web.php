@@ -26,6 +26,7 @@ Route::get('/dashboarduser', function() {
     return view('user.editor.dashboard');
 });
 
+
 Route::get('sikm/login', [SikmController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [SikmController::class, 'authenticate']);
 Route::post('/logout', [SikmController::class, 'logout']);

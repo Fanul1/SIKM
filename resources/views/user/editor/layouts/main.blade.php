@@ -23,13 +23,10 @@
 <body>
     @include("user.editor.layouts.header")
     <div class="container">
-        <div class="">
             @include("user.editor.layouts.sidebar")
-            
             <main class="pt-20 sm:ml-72">
                 @yield('container')
             </main>
-        </div>
     </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
