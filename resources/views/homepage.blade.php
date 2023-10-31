@@ -1,4 +1,4 @@
-@extends('navigation') <!-- Extend the navigation template -->
+@extends('layouts.navigation') <!-- Extend the navigation template -->
 @section('title', 'Homepage') <!-- Set the title for this page -->
 @section('content')
     <div class="flex items-center justify-center p-4 text-center h-125 sm:text-left" style=" background-color: #AEB0E5;">
