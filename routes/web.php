@@ -32,3 +32,7 @@ Route::post('/logout', [SikmController::class, 'logout']);
 
 Route::get('sikm/register', [SikmController::class, 'register'])->middleware('guest');
 Route::post('sikm/register', [SikmController::class, 'store']);
+
+Route::get('/ukm', function () {
+    return view('ukm');
+});
