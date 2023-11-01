@@ -56,34 +56,28 @@
                 </button>
             </div>
             <div class="Frame7"
-                style="width: 387.85px; height: 64.26px; padding-left: 20px; padding-right: 20px; padding-top: 7px; padding-bottom: 7px; left: 48.62px; top: 291.22px; position: absolute; background: #F8F8F8; border-radius: 20px; border: 2px #DDDDDD solid; justify-content: space-between; align-items: center; display: inline-flex">
-                <div class="Group1" style="width: 121px; height: 26.50px; position: relative">
-                    <div class="MdiPasswordOutline"
-                        style="width: 24px; height: 24px; padding-top: 1px; padding-bottom: 2px; padding-left: 4px; padding-right: 4px; left: 0px; top: 0px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
-                        <div class="Vector" style="width: 16px; height: 21px; background: #B1B1B1"></div>
-                    </div>
-                    <input placeholder="KataSandi" name="password" id="password" style="left: 34px; top: 2.50px; position: absolute; color: #000000; font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-                </div>
-                <div class="MdiHideOutline"
-                    style="height: 24px; padding-top: 4px; padding-bottom: 2px; padding-left: 1px; padding-right: 1px; justify-content: center; align-items: center; display: flex">
-                    <div class="Vector" style="width: 22px; height: 18px; background: #07294D"></div>
-                </div>
-            </div>
+    style="width: 387.85px; height: 64.26px; padding-left: 20px; padding-right: 20px; padding-top: 7px; padding-bottom: 7px; left: 48.62px; top: 291.22px; position: absolute; background: #FFFFFF; border-radius: 20px; border: 2px #FFFFFF solid; display: flex; align-items: center;">
+    <div class="LockIcon" style="width: 24px; height: 24px; padding-left: 2px; padding-right: 2px; padding-top: 4px; padding-bottom: 4px; justify-content: center; align-items: center; display: flex">
+        <img src="../feather/lock.svg" alt="" style="width: 16px; height: 21px;">
+    </div>
+    <input type="password" placeholder="Kata Sandi" name="password" id="password" style="flex: 1; padding: 10px; color: #00000; font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word;">
+    <div id="togglePassword" style="cursor: pointer;">
+    </div>
+</div>
             <div class="Frame2"
-                style="width: 387.85px; height: 64.26px; padding-left: 20px; padding-right: 20px; padding-top: 7px; padding-bottom: 7px; left: 49px; top: 206px; position: absolute; background: #F8F8F8; border-radius: 20px; border: 2px #DDDDDD solid; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+                style="width: 387.85px; height: 64.26px; padding-left: 20px; padding-right: 20px; padding-top: 7px; padding-bottom: 7px; left: 49px; top: 206px; position: absolute; background: #FFFFFF; border-radius: 20px; border: 2px #FFFFFF solid; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
                 <div class="IcOutlineEmail"
                     style="width: 24px; height: 24px; padding-left: 2px; padding-right: 2px; padding-top: 4px; padding-bottom: 4px; justify-content: center; align-items: center; display: flex">
-                    <div class="Vector" style="width: 20px; height: 16px; background: #B1B1B1"></div>
+                    <img src="../feather/mail.svg" alt="" style="width: 16px; height: 21px;">
                 </div>
                 <input type="email" id="email" name="email" placeholder="Email" style="width:inherit; color: #000000; font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
             </div>
             
-            <div class="Name" style="width: 387.85px; height: 64.26px; padding-left: 20px; padding-right: 20px; padding-top: 7px; padding-bottom: 7px; left: 49px; top: 118px; position: absolute; background: #F8F8F8; border-radius: 20px; border: 2px #DDDDDD solid; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+            <div class="Name" style="width: 387.85px; height: 64.26px; padding-left: 20px; padding-right: 20px; padding-top: 7px; padding-bottom: 7px; left: 49px; top: 118px; position: absolute; background: #FFFFFF; border-radius: 20px; border: 2px #FFFFFF solid; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
               <div class="UserLight" style="width: 24px; height: 24px; padding-top: 4px; padding-left: 4px; padding-right: 4px; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; display: inline-flex">
-                  <div class="Ellipse46" style="width: 8px; height: 8px; border-radius: 9999px; border: 2px #B1B1B1 solid"></div>
-                  <div class="Ellipse45" style="width: 16px; height: 12px; border-radius: 9999px; border: 2px #B1B1B1 solid"></div>
+              <img src="../feather/user.svg" alt="" style="width: 20px; height: 30px;">
               </div>
-              <input type="text" id="name" name="name" placeholder="Name" style="width:inherit; color: #111111; font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word;">
+              <input type="text" id="name" name="name" placeholder="Name" style="width:inherit; color: #; font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word;">
           </div>
           
         </form>
