@@ -50,7 +50,7 @@
 
     <!-- Footer -->
     <footer class="p-4 text-white" style="background-color: #401111;">
-        <div class="container flex flex-col items-center justify-between mx-auto md:flex-row">
+    <div class="container flex flex-col items-center justify-between mx-auto md:flex-row" style="margin-top: 30px; margin-bottom: 30px;">
             <div class="flex flex-row items-center">
                 <img src={{ asset('assets/Logousk.png') }} alt="Logo" class="w-16 h-16">
                 <div class="flex flex-col justify-center ml-4 font-bold font-poppins">
@@ -79,13 +79,13 @@
                 <h2 class="mb-2 text-xl font-bold">Kontak</h2>
                 <p class="text-base">
                     <span class="flex items-center">
-                        <img src={{ asset('assets/phone.png') }} alt="Logo" class="w-3 h-3 mr-2">
+                        <img src={{ asset('feather/phone.svg') }} alt="Logo" class="w-3 h-3 mr-2">
                         <span>089515090480</span>
                     </span>
                 </p>
                 <p class="text-base">
                     <span class="flex items-center">
-                        <img src={{ asset('assets/email.png') }} alt="Logo" class="w-3 h-3 mr-2">
+                        <img src={{ asset('feather/mail.svg') }} alt="Logo" class="w-3 h-3 mr-2">
                         <span>sikm.usk@gmail.com</span>
                     </span>
                 </p>
@@ -93,7 +93,8 @@
         </div>
 
         <!-- Garis Pemisah -->
-        <hr class="w-full mx-auto my-4" style="background-color: #FFF;">
+        <hr class="w-full mx-auto my-4" style="background-color: #FFF; margin: 50px 0;">
+
 
         <!-- Logo-footer -->
         <div class="mt-2 text-center font-poppins">
@@ -101,15 +102,15 @@
             <div class="flex items-center justify-center">
                 <!-- Logo GitHub -->
                 <a href="https://github.com/username" class="mx-2 hover:text-gray-400" target="_blank">
-                    <img src={{ asset('assets/github.png') }} alt="GitHub" class="w-6 h-auto">
+                    <img src={{ asset('feather/github.svg') }} alt="GitHub" class="w-6 h-auto">
                 </a>
                 <!-- Logo Facebook -->
                 <a href="https://facebook.com/username" class="mx-2 text-white hover:text-gray-400" target="_blank">
-                    <img src={{ asset('assets/facebook.png') }} alt="Facebook" class="w-6 h-auto">
+                    <img src={{ asset('feather/facebook.svg') }} alt="Facebook" class="w-6 h-auto">
                 </a>
                 <!-- Logo Instagram -->
                 <a href="https://instagram.com/username" class="mx-2 text-white hover:text-gray-400" target="_blank">
-                    <img src={{ asset('assets/instagram.png') }} alt="Instagram" class="w-6 h-auto">
+                    <img src={{ asset('feather/instagram.svg') }} alt="Instagram" class="w-6 h-auto">
                 </a>
             </div>
 
