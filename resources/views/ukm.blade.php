@@ -34,6 +34,8 @@
     <!-- Content -->
     
     <div style="background-color: #D9D9D9;" class="w-full flex flex-col items-center overflow-hidden py-6">
+        
+        <!-- Profil -->
         <div>
             <div class="h-1 bg-purple-700"></div>
             <div  style="background-color: #111723; width: 34rem;" class="text-center">
@@ -43,18 +45,25 @@
                 <img src={{ asset('assets/menwa.png') }} alt="" class="h-full w-full object-contain">
             </div>
         </div>        
+
+        <!-- Gambar -->
         <div class="mt-8 w-full flex flex-wrap justify-center gap-8 md:gap-44 px-6 md:px-0">
             <img src={{ asset('assets/menwa1.png') }} alt="" class="w-80 h-52 object-contain">
             <img src={{ asset('assets/menwa2.png') }} alt="" class="w-80 h-52 object-contain">
         </div>
 
+
         <div class="mt-16 md:mt-8 w-full flex flex-wrap justify-center gap-8 md:gap-16">
+            
+            <!-- Tentang -->
             <div class="w-60">
                 <h2 class="text-lg font-bold mb-4">TENTANG</h2>
                 <a href="" class="block text-xs">SEJARAH TERBENTUKNYA UKM RESIMEN MAHASISWA</a>                                
                 <a href="" class="block text-xs">VISI dan MISI</a>
                 <a href="" class="block text-xs">TUJUAN ORGANISASI</a>
             </div>
+            
+            <!-- Informasi -->
             <div class="w-60">
                 <h2 class="text-lg font-bold mb-4">INFORMASI</h2>
                 <p class="text-xs">Jl. Tgk Hasan Krueng Kalee, Sekretariat Menwa, Kopelma Darussalam, Banda Aceh</p>
@@ -63,12 +72,17 @@
             </div>
         </div>
 
+        
         <div class=" mt-16 md:mt-8 w-full flex flex-wrap justify-center gap-16 text-justify px-6 md:px-0">
+        
+            <!-- Sejarah -->
             <div class="w-64 md:w-96">
                 <h2 class="text-xs font-bold mb-4">SEJARAH TERBENTUKNYA UKM RESIMEN MAHASISWA</h2>
                 <p style="text-indent: 2.75em" class="text-xs">Pada masa mempertahankan kemerdekaan Indonesia, mahasiswa mengikuti kegiatan wajib latih di Jawa Barat. Kegiatan tersebut dilakukan mulai dari tanggal 13 Juni sampai dengan 14 September 1959. Mahasiswa wajib latih atau walawa mendapatkan pelatihan di Kodam VI Siliwangi. Mereka yang mengikuti pelatihan berhak memakai lambang Siliwangi. Mulai dari masa tersebut, walawa sudah memiliki fungsi untuk mendukung TNI jika terjadi keadaan genting pada NKRI.</p>
                 <p style="text-indent: 2.75em" class="text-xs">Wajib latih pada tahun 1959 merupakan cikal bakal terbentuknya Resimen Mahasiswa Indonesia yang masih ada sampai sekarang. Tokoh yang pertama kali mencetuskan Menwa adalah Jenderal Abdul Haris Nasution. Secara resmi, Menwa terbentuk pada tahum 1963 sesuai keputusan bersa,a Wakil Menteri Pertama Urusan Pertahanan dan Keamanan (Wampa Hankam) dan Menteri Perguruan Tinggi dan Ilmu Pengetahuan (PTIP) pada saat itu. Lalu, pada tanggal 11 Oktober 2000, pembinaan Menwa diserahkan pada perguruan tinggi masing-masing untuk menjadi UKM (Unit Kegiatan Mahasiswa). Namun masih tetap bekerja sama dengan Komando Kewilayahan TNI.</p>
             </div>
+
+            <!-- Visi dan Misi -->
             <div class="w-64">
                 <h2 class="text-xs font-bold mb-4">VISI dan MISI</h2>
                 <h3 class="text-xs">VISI</h3>
@@ -81,12 +95,126 @@
                     <li>Melakukan pengamatan, penelitian, dan pengembangan di dalamdan di luar lingkup perguruan tinggi.</li>
                 </ol>
             </div>
+
+            <!-- Tujuan -->
             <div class="w-64 md:w-96">
                 <h2 class="text-xs font-bold mb-4">TUJUAN ORGANISASI</h2>
                 <p style="text-indent: 2.75em" class="text-xs">Resimen Mahasiswa hadir dan termasuk dalam jajaran lembaga kepemudaan nasional di Indonesia. Hadirnya Menwa memiliki maksud untuk dapat menggembleng ‘tulang punggung’ bangsa atau mahasiswa yang akan mengarah pada kehidupan di Indonesia dengan mengutamakan Pancasila serta dasar hukum negara yaitu UUD 1945.</p>
                 <p style="text-indent: 2.75em" class="text-xs">Tujuan berdirinya Menwa, dapat dilihat dari dasar yang digunakan oleh Menwa ketika pertama kali dicetuskan oleh Jenderal Besar AH Nasution. Dasar tersebut ialah maksud untuk mampu membendung paham-paham komunis, lalu pada perkembangan organisasi Menwa dikeluarkan lah SKEP Menteri Pertahanan dan Menteri Perguruan Tinggi dan Ilmu Pengetahuan tahun 1963 dengan nomor SKEP yaitu M/A/20/1963 mengenai Pelaksanaan Wajib Latih dan Pembentukan Resimen Mahasiswa di Perguruan Tinggi. Lalu, pada tahun 1965 dikeluarkanlah lagi SKEP Menko Hankam/ Kasad serta Menteri PTIP dengan nomor SKEP yaitu M/A/165/1965 mengenai Organisasi dan Prosedur dari Resimen Mahasiswa.</p>
             </div>
         </div>
+        
+        <div class="mt-16 grid gap-4 p-8 lg:p-24 w-full" style="max-width: 88rem;">
+            <h2 class="text-xl font-bold text-center mb-4">BERITA</h2>
+            <a href="/berita" class="block bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mb-16 md:mb-0">
+                <img class="w-full h-52 md:h-auto object-cover rounded-md" src="https://source.unsplash.com/1200x400/?crowd" alt="">
+                <div class="flex flex-col justify-between p-4 leading-normal">
+                    <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                </div>
+            </a>
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 justify-items-center ">
+                <div class="max-w-sm md:max-w-md bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <a href="/berita">
+                        <img class="object-cover rounded-t-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="/berita">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>                       
+                    </div>
+                </div>
+
+                <div class="max-w-sm md:max-w-md bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <a href="/berita">
+                        <img class="object-cover rounded-t-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="/berita">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>                       
+                    </div>
+                </div>
+
+                <div class="max-w-sm md:max-w-md bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <a href="/berita">
+                        <img class="object-cover rounded-t-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="/berita">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>                       
+                    </div>
+                </div>
+
+                <div class="max-w-sm md:max-w-md bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <a href="/berita">
+                        <img class="object-cover rounded-t-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="/berita">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>                       
+                    </div>
+                </div>
+
+                <div class="max-w-sm md:max-w-md bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <a href="/berita">
+                        <img class="object-cover rounded-t-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="/berita">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>                       
+                    </div>
+                </div>
+
+                <div class="max-w-sm md:max-w-md bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <a href="/berita">
+                        <img class="object-cover rounded-t-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="/berita">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>                       
+                    </div>
+                </div>
+
+                <div class="max-w-sm md:max-w-md bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <a href="/berita">
+                        <img class="object-cover rounded-t-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="/berita">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>                       
+                    </div>
+                </div>
+
+                <div class="max-w-sm md:max-w-md bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <a href="/berita">
+                        <img class="object-cover rounded-t-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="/berita">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>                       
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        
+
     </div>
 
     <!-- Footer -->
