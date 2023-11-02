@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email', 50)->nullable(false)->unique();
+            $table->string('email', 50)->unique()->nullable(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('is_admin')->default(false);
+            $table->boolean('role')->default(0); // 0 for editor, 1 for admin
             $table->rememberToken();
             $table->timestamps();
-        });
+        });        
     }
 
     /**

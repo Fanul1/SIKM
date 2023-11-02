@@ -39,8 +39,8 @@ Route::get('/editberitaukm', function() {
 });
 
 Route::get('sikm/login', [SikmController::class, 'login'])->name('login')->middleware('guest');
-Route::post('/login', [SikmController::class, 'authenticate']);
-Route::post('/logout', [SikmController::class, 'logout']);
+Route::post('sikm/login', [SikmController::class, 'authenticate']);
+Route::post('sikm/logout', [SikmController::class, 'logout'])->name('logout');
 
 Route::get('sikm/register', [SikmController::class, 'register'])->middleware('guest');
 Route::post('sikm/register', [SikmController::class, 'store']);

@@ -26,21 +26,6 @@ class SikmController extends Controller
         return view('user.register');
     }
 
-    public function authenticate(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('/sikm');
-        }
-
-        return back()->with('loginError', 'Login gagal!');
-    }
-
     public function logout()
     {
         Auth::logout();
@@ -49,6 +34,27 @@ class SikmController extends Controller
         return redirect('/sikm');
     }
 
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            
+            // Redirect users based on their roles
+            if (Auth::user()->role === 1) {
+                return redirect()->intended('/dashboard');
+            } else {
+                return redirect()->intended('/dashboarduser');
+            }
+        }
+        
+        return back()->with('loginError', 'Login gagal!');
+    }
+    
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -58,12 +64,22 @@ class SikmController extends Controller
                     $fail($attribute.' must be a valid email with @usk.ac.id domain.');
                 }
             }],
-            'password' => 'required|min:8|max:255'
+            'password' => 'required|min:8|max:255|confirmed'
         ]);
-
+    
         $validatedData['password'] = Hash::make($validatedData['password']);
-        User::create($validatedData);
-        $request->session()->flash('success', 'Berhasil daftar! Mohon login');
-        return redirect('sikm/login');
+        $user = User::create($validatedData);
+    
+        // Log the user in after registration
+        Auth::login($user);
+        
+        $request->session()->flash('success', 'Berhasil daftar! Selamat datang.');
+        
+        // Redirect users based on their roles
+        if ($user->role === 1) {
+            return redirect('/dashboard');
+        } else {
+            return redirect('/dashboarduser');
+        }
     }
 }

@@ -24,6 +24,17 @@
 <body class="bg-gray-100">
     <nav class="p-4 bg-blue-900">
         <h2 class="text-3xl font-bold text-white pl-7">ADMINISTRATOR</h2>
+        <ul class="flex ml-auto space-x-4 pr-7">
+            <!-- Other navigation links here -->
+            @auth
+            <li>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="text-white">Logout</button>
+                </form>
+            </li>
+            @endauth
+        </ul>
     </nav>
     <div class="container mx-auto mt-6">
         <span class="text-2xl font-medium">Dashboard</span>

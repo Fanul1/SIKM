@@ -122,7 +122,9 @@
         <div class="CloseButton" style="width: 39px; height: 35px; left: 436px; top: 15px; position: absolute; cursor: pointer;">
     <div class="Rectangle30" style="width: 39px; height: 35px; left: 0px; top: 0px; position: absolute; background: #07294D; border-top-left-radius: 15px; border-top-right-radius: 15px;">
     </div>
-    <div class="XIcon" style="width: 24px; height: 24px; position: absolute; top: 50%; left: 60%; transform: translate(-50%, -50%); color: #D9D9D9; font-size: 24px; line-height: 1; font-weight: bold;">X</div>
+    <a href="/">
+        <div class="XIcon" style="width: 24px; height: 24px; position: absolute; top: 50%; left: 60%; transform: translate(-50%, -50%); color: #D9D9D9; font-size: 24px; line-height: 1; font-weight: bold;">X</div>
+    </a>
 </div>
 </div>
 
