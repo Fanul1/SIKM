@@ -127,7 +127,7 @@
 </div>
 
         <div class="LogoTerang"
-            style="width: 197px; height: 50px; padding-right: 5px; left: 144px; top: 32px; position: absolute; border-radius: 20px; justify-content: flex-start; align-items: center; display: inline-flex">
+            style="width: 197px; height: 50px; padding-right: 5px; left: 600px; top: 32px; position: absolute; border-radius: 20px; justify-content: flex-start; align-items: center; display: inline-flex">
             <div class="LogIn"
                 style="color: black; font-size: 45px; font-family: Poppins; font-weight: 700; word-wrap: break-word">
                 Register</div>
