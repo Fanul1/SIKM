@@ -36,3 +36,7 @@ Route::post('sikm/register', [SikmController::class, 'store']);
 Route::get('/ukm', function () {
     return view('ukm');
 });
+
+Route::get('/berita', function () {
+    return view('berita');
+});
