@@ -24,6 +24,45 @@
         .fadeIn {
             animation: fadeIn 1.5s ease-in-out forwards;
         }
+
+        
+        .CloseButton {
+        width: 39px;
+        height: 35px;
+        left: 436px;
+        top: 15px;
+        position: absolute;
+        cursor: pointer;
+        transition: background-color 0.3s; /* Efek transisi untuk perubahan latar belakang */
+    }
+
+    .CloseButton:hover {
+        background-color: #FF0000; /* Warna latar belakang saat hover (ganti sesuai keinginan) */
+    }
+
+    .Rectangle30 {
+        width: 39px;
+        height: 35px;
+        left: 0px;
+        top: 0px;
+        position: absolute;
+        background: #07294D;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .XIcon {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #D9D9D9;
+        font-size: 24px;
+        line-height: 1;
+        font-weight: bold;
+    }
         
     </style>
 </head>
@@ -58,11 +97,11 @@
             <div class="LogoTerang" style="width: 157.47px; height: 49.76px; padding-right: 32.47px; left: 164.27px; top: 33.18px; position: absolute; border-radius: 20px; justify-content: flex-start; align-items: center; display: inline-flex">
                 <div class="LogIn" style="color: black; font-size: 45px; font-family: Poppins; font-weight: 700; word-wrap: break-word">Login</div>
             </div>
-            <div class="Group4" style="width: 39px; height: 35px; left: 437px; top: 16px; position: absolute">
-                <div class="Rectangle30" style="width: 39px; height: 35px; left: 0px; top: 0px; position: absolute; background: #07294D; border-top-left-radius: 15px; border-top-right-radius: 15px"></div>
-                <div class="Line3" style="width: 29.83px; height: 0px; left: 9px; top: 27.10px; position: absolute; transform: rotate(-45deg); transform-origin: 0 0; background: #D9D9D9; border: 2px white solid"></div>
-                <div class="Line4" style="width: 29.83px; height: 0px; left: 9px; top: 6px; position: absolute; transform: rotate(45deg); transform-origin: 0 0; border: 2px white solid"></div>
-            </div>
+            <div class="CloseButton" style="width: 39px; height: 35px; left: 436px; top: 15px; position: absolute; cursor: pointer;">
+    <div class="Rectangle30" style="width: 39px; height: 35px; left: 0px; top: 0px; position: absolute; background: #07294D; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+    </div>
+    <div class="XIcon" style="width: 24px; height: 24px; position: absolute; top: 50%; left: 60%; transform: translate(-50%, -50%); color: #D9D9D9; font-size: 24px; line-height: 1; font-weight: bold;">X</div>
+</div>
         </div>
     </form>
 

@@ -27,6 +27,44 @@
         .fadeIn {
             animation: fadeIn 1.5s ease-in-out forwards;
         }
+
+        .CloseButton {
+        width: 39px;
+        height: 35px;
+        left: 436px;
+        top: 15px;
+        position: absolute;
+        cursor: pointer;
+        transition: background-color 0.3s; /* Efek transisi untuk perubahan latar belakang */
+    }
+
+    .CloseButton:hover {
+        background-color: #FF0000; /* Warna latar belakang saat hover (ganti sesuai keinginan) */
+    }
+
+    .Rectangle30 {
+        width: 39px;
+        height: 35px;
+        left: 0px;
+        top: 0px;
+        position: absolute;
+        background: #07294D;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .XIcon {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #D9D9D9;
+        font-size: 24px;
+        line-height: 1;
+        font-weight: bold;
+    }
     </style>
 </head>
 
@@ -56,11 +94,11 @@
                 </button>
             </div>
             <div class="Frame7"
-    style="width: 387.85px; height: 64.26px; padding-left: 20px; padding-right: 20px; padding-top: 7px; padding-bottom: 7px; left: 48.62px; top: 291.22px; position: absolute; background: #FFFFFF; border-radius: 20px; border: 2px #FFFFFF solid; display: flex; align-items: center;">
+    style="width: 387.85px; height: 64.26px; padding-left: 20px; padding-right: 20px; padding-top: 7px; padding-bottom: 7px; left: 49px; top: 291.22px; position: absolute; background: #FFFFFF; border-radius: 20px; border: 2px #FFFFFF solid; display: flex; align-items: center;">
     <div class="LockIcon" style="width: 24px; height: 24px; padding-left: 2px; padding-right: 2px; padding-top: 4px; padding-bottom: 4px; justify-content: center; align-items: center; display: flex">
         <img src="../feather/lock.svg" alt="" style="width: 16px; height: 21px;">
     </div>
-    <input type="password" placeholder="Kata Sandi" name="password" id="password" style="flex: 1; padding: 10px; color: #00000; font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word;">
+    <input type="password" placeholder="Kata Sandi" name="password" id="password" style="width:inherit; color: #000000; font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
     <div id="togglePassword" style="cursor: pointer;">
     </div>
 </div>
@@ -81,17 +119,13 @@
           </div>
           
         </form>
-        <div class="Group5" style="width: 39px; height: 35px; left: 436px; top: 15px; position: absolute">
-            <div class="Rectangle30"
-                style="width: 39px; height: 35px; left: 0px; top: 0px; position: absolute; background: #07294D; border-top-left-radius: 15px; border-top-right-radius: 15px">
-            </div>
-            <div class="Line3"
-                style="width: 29.83px; height: 0px; left: 9px; top: 27.10px; position: absolute; transform: rotate(-45deg); transform-origin: 0 0; background: #D9D9D9; border: 2px white solid">
-            </div>
-            <div class="Line4"
-                style="width: 29.83px; height: 0px; left: 9px; top: 6px; position: absolute; transform: rotate(45deg); transform-origin: 0 0; border: 2px white solid">
-            </div>
-        </div>
+        <div class="CloseButton" style="width: 39px; height: 35px; left: 436px; top: 15px; position: absolute; cursor: pointer;">
+    <div class="Rectangle30" style="width: 39px; height: 35px; left: 0px; top: 0px; position: absolute; background: #07294D; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+    </div>
+    <div class="XIcon" style="width: 24px; height: 24px; position: absolute; top: 50%; left: 60%; transform: translate(-50%, -50%); color: #D9D9D9; font-size: 24px; line-height: 1; font-weight: bold;">X</div>
+</div>
+</div>
+
         <div class="LogoTerang"
             style="width: 197px; height: 50px; padding-right: 5px; left: 144px; top: 32px; position: absolute; border-radius: 20px; justify-content: flex-start; align-items: center; display: inline-flex">
             <div class="LogIn"
