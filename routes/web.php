@@ -26,6 +26,18 @@ Route::get('/dashboarduser', function() {
     return view('user.editor.dashboard');
 });
 
+Route::get('/editprofukm', function() {
+    return view('user.editor.profilukm');
+});
+
+Route::get('/editkontakukm', function() {
+    return view('user.editor.kontakukm');
+});
+
+Route::get('/editberitaukm', function() {
+    return view('user.editor.beritaukm');
+});
+
 Route::get('sikm/login', [SikmController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [SikmController::class, 'authenticate']);
 Route::post('/logout', [SikmController::class, 'logout']);
