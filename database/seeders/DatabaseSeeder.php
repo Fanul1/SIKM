@@ -21,15 +21,15 @@ class DatabaseSeeder extends Seeder
         // ]);
         User::create([
             'name'=>'admin',
-            'email'=>'admin@usk.ac.id',
+            'email'=>'admin@ukm.com',
             'role'=>'1',
-            'password'=>bcrypt('admin')
+            'password'=>'admin'
         ]);
         User::create([
-            'name'=>'user',
-            'email'=>'user@usk.ac.id',
+            'name'=>'fanul',
+            'email'=>'fanul@ukm.com',
             'role'=>'0',
-            'password'=>bcrypt('user')
+            'password'=>'fanul'
         ]);
     }
 }

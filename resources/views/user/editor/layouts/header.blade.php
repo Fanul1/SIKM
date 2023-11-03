@@ -42,7 +42,7 @@
                         class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                         aria-expanded="false" data-dropdown-toggle="dropdown-user">
                         <span class="sr-only">Open user menu</span>
-                        <img class="w-8 h-8 rounded-full" src="assets/email.png" alt="user photo">
+                        <img class="w-8 h-8 bg-white rounded-full" src="feather/user.svg" alt="user photo">
                     </button>
                 </div>
                 <div
@@ -50,20 +50,22 @@
                     id="dropdown-user">
                     <div class="px-4 py-3" role="none">
                         <p class="text-sm text-gray-900 dark:text-white" role="none">
-                            Fanul
+                            {{ auth()->user()->name }}
                         </p>
                         <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                            fanul@gmail.com
+                            {{ auth()->user()->email }}
                         </p>
                     </div>
                     <ul class="py-1" role="none">
                         <li>
-                            <a href="#"
-                                class="flex items-center px-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                                role="menuitem">
-                                <img src="feather/log-out.svg" class="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" alt="Profil Icon" aria-hidden="true">
-                                <span class="flex-1 ml-3 whitespace-nowrap">Log Out</span>
-                            </a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="flex items-center px-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                                    role="menuitem">
+                                    <img src="feather/log-out.svg" class="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" alt="Profil Icon" aria-hidden="true">
+                                    <span class="flex-1 ml-3 whitespace-nowrap">Log Out</span>
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </div>

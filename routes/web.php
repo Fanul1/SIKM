@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\SikmController;
+use App\Http\Controllers\UkmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,11 @@ Route::get('/', [SikmController::class, 'home']);
 
 Route::get('/dashboard', function () {
     if (auth()->check() && auth()->user()->role === 1) {
-        return view('user.admin.dashboard');
+        $users = DB::table('users')
+            ->select('*')
+            ->where('role', 0)
+            ->get();   
+        return view('user.admin.dashboard', compact('users'));
     } else{
         abort(403);
     }
@@ -53,10 +58,5 @@ Route::post('sikm/logout', [SikmController::class, 'logout'])->name('logout');
 Route::get('sikm/register', [SikmController::class, 'register'])->middleware('guest');
 Route::post('sikm/register', [SikmController::class, 'store'])->name('store');
 
-Route::get('/ukm', function () {
-    return view('ukm');
-});
-
-Route::get('/berita', function () {
-    return view('berita');
-});
+Route::get('/ukm', [UkmController::class, 'ukm']);
+Route::get('/berita', [UkmController::class, 'berita']);

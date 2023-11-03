@@ -86,13 +86,13 @@
                 <h2 class="mb-2 text-xl font-bold">Kontak</h2>
                 <p class="text-base">
                     <span class="flex items-center">
-                        <img src={{ asset('feather/phone.svg') }} alt="Logo" class="w-3 h-3 mr-2">
+                        <img src={{ asset('feather/phone.svg') }} alt="Logo" class="w-5 h-5 mr-2">
                         <span>089515090480</span>
                     </span>
                 </p>
                 <p class="text-base">
                     <span class="flex items-center">
-                        <img src={{ asset('feather/mail.svg') }} alt="Logo" class="w-3 h-3 mr-2">
+                        <img src={{ asset('feather/mail.svg') }} alt="Logo" class="w-5 h-5 mr-2 bg-white" >
                         <span>sikm.usk@gmail.com</span>
                     </span>
                 </p>

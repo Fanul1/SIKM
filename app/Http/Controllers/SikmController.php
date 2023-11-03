@@ -51,23 +51,17 @@ class SikmController extends Controller
                 return redirect()->intended('/dashboarduser');
             }
         }
-        
-        return back()->with('loginError', 'Login gagal!');
+        return back()->with('loginError', 'Email dan Password anda masukkan tidak sesuai');
     }
     
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'name' => ['required', 'min:3', 'max:255', 'unique:users'],
-            'email' => ['required', 'email', 'unique:users', function ($attribute, $value, $fail) {
-                if (strpos($value, '@usk.ac.id') === false) {
-                    $fail($attribute.' must be a valid email with @usk.ac.id domain.');
-                }
-            }],
+            'email' => ['required', 'email', 'unique:users'],
             'password' => 'required|min:3|max:255|confirmed'
         ]);
     
-        $validatedData['password'] = Hash::make($validatedData['password']);
         $user = User::create($validatedData);
     
         // Log the user in after registration

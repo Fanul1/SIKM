@@ -22,19 +22,14 @@
 </head>
 
 <body class="bg-gray-100">
-    <nav class="p-4 bg-blue-900">
+    <nav class="flex justify-between p-4 bg-blue-900">
         <h2 class="text-3xl font-bold text-white pl-7">ADMINISTRATOR</h2>
-        <ul class="flex ml-auto space-x-4 pr-7">
-            <!-- Other navigation links here -->
-            @auth
-            <li>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="text-white">Logout</button>
-                </form>
-            </li>
-            @endauth
-        </ul>
+        @auth
+        <form method="POST" action="{{ route('logout') }}" class="mr-4">
+            @csrf
+            <button type="submit" class="text-white">Logout</button>
+        </form>
+        @endauth
     </nav>
     <div class="container mx-auto mt-6">
         <span class="text-2xl font-medium">Dashboard</span>
@@ -52,16 +47,18 @@
                     <th class="px-4 py-2 text-center border">No</th>
                     <th class="px-4 py-2 text-center border">Nama</th>
                     <th class="px-4 py-2 text-center border">Email</th>
-                    <th class="px-4 py-2 text-center border">Kata Sandi</th>
-                    <th class="px-4 py-2 text-center border">Status</th>
+                    <th class="px-4 py-2 text-center border">Detail</th>
+                    <th class="px-4 py-2 text-center border">Aksi</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($users as $user)
                 <tr class="bg-stone-100">
-                    <td class="px-4 py-2 text-center border">1</td>
-                    <td class="px-4 py-2 text-center border">Fanul</td>
-                    <td class="px-4 py-2 text-center border">fanul@gmail.com</td>
-                    <td class="px-4 py-2 text-center border">1234</td>
+                    <td class="px-4 py-2 text-center border">{{ $loop->iteration }}</td>
+                    <td class="px-4 py-2 text-center border">{{ $user->name }}</td>
+                    <td class="px-4 py-2 text-center border">{{ $user->email }}</td>
+                    <td class="px-4 py-2 text-center border">
+                        <a href="" class="px-4 py-2 bg-green-600 rounded-xl">Detail</a></td>
                     <td class="px-4 py-2 text-center border">
                         <button
                             class="px-4 py-2 mr-2 font-bold text-white bg-blue-900 rounded hover:bg-blue-700">Validasi</button>
@@ -69,6 +66,7 @@
                             class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Hapus</button>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -83,7 +81,7 @@
                     <th class="px-4 py-2 text-center border">Email</th>
                     <th class="px-4 py-2 text-center border">UKM</th>
                     <th class="px-4 py-2 text-center border">Role</th>
-                    <th class="px-4 py-2 text-center border">Status</th>
+                    <th class="px-4 py-2 text-center border">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -111,7 +109,7 @@
                     <th class="px-4 py-2 text-center border">Nama UKM</th>
                     <th class="px-4 py-2 text-center border">Kontak</th>
                     <th class="px-4 py-2 text-center border">Nama Editor</th>
-                    <th class="px-4 py-2 text-center border">Status</th>
+                    <th class="px-4 py-2 text-center border">Aksi</th>
                 </tr>
             </thead>
             <tbody>
