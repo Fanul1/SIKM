@@ -38,9 +38,16 @@
                     placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
                 </div>
                 <!-- Tombol Login -->
-                <a href="{{ url('sikm/login') }}">
-                    <button class="ml-6 text-xl font-bold text-white font-poppins">Login</button>
-                </a>
+                @if (auth()->check())
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="ml-6 text-xl font-bold text-white font-poppins">Logout</button>
+                    </form>
+                @else
+                    <a href="{{ url('sikm/login') }}">
+                        <button class="ml-6 text-xl font-bold text-white font-poppins">Login</button>
+                    </a>
+                @endif
             </div>
         </div>
     </nav>

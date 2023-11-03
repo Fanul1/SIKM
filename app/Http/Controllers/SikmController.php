@@ -64,7 +64,7 @@ class SikmController extends Controller
                     $fail($attribute.' must be a valid email with @usk.ac.id domain.');
                 }
             }],
-            'password' => 'required|min:8|max:255|confirmed'
+            'password' => 'required|min:3|max:255|confirmed'
         ]);
     
         $validatedData['password'] = Hash::make($validatedData['password']);

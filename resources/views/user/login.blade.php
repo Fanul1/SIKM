@@ -7,105 +7,66 @@
     @vite('resources/css/app.css')
     <title>SIKM - Login</title>
     <style>
-        body {
-            background-image: url('{{ asset("assets/beautiful-golden-field-with-amazing-cloudy.jpg") }}');
+        body::before {
+            content: "";
+            background-image: url('/assets/beautiful-golden-field-with-amazing-cloudy.jpg');
             background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(5px); /* Efek blur */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1; /* Mengatur posisi z-indeks di belakang konten */
         }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Apply the fadeIn animation to the .Group2 */
-        .fadeIn {
-            animation: fadeIn 1.5s ease-in-out forwards;
-        }
-
-        
-        .CloseButton {
-        width: 39px;
-        height: 35px;
-        left: 436px;
-        top: 15px;
-        position: absolute;
-        cursor: pointer;
-        transition: background-color 0.3s; /* Efek transisi untuk perubahan latar belakang */
-    }
-
-    .CloseButton:hover {
-        background-color: #FF0000; /* Warna latar belakang saat hover (ganti sesuai keinginan) */
-    }
-
-    .Rectangle30 {
-        width: 39px;
-        height: 35px;
-        left: 0px;
-        top: 0px;
-        position: absolute;
-        background: #07294D;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-    }
-
-    .XIcon {
-        width: 24px;
-        height: 24px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: #D9D9D9;
-        font-size: 24px;
-        line-height: 1;
-        font-weight: bold;
-    }
-        
     </style>
 </head>
-<body class="flex items-center justify-center h-screen">
-    
-<form action="/sikm/login" method="post">
-        @csrf
-        <div class="Group2 fadeIn" style="width: 486px; height: 606px; position: relative">
-            <div class="Rectangle23" style="width: 486px; height: 604.89px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.10); border-radius: 20px; border: 9.76px rgba(255, 255, 255, 0.20) solid; backdrop-filter: blur(65.07px)"></div>
-            <div class="Frame5" style="width: 486px; height: 70.77px; padding-top: 20px; padding-bottom: 20px; left: 0px; top: 535.23px; position: absolute; background: #E8F3F2; border-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-                <div class="BelumMempunyaiAkunDaftar"><span style="color: #999999; font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Belum Mempunyai Akun? </span><a href="{{ url('sikm/register') }}"><span style="color: #07294D; font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Daftar</span></a></div>
+<body>
+    <section class="">
+        <div class="grid max-w-screen-xl gap-8 px-4 py-8 mx-auto lg:py-16 lg:grid-cols-2 lg:gap-16">
+            <div class="flex flex-col justify-center">
+                <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">SIKM</h1>
+                <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Disini kami mengintegrasikan semua ukm yang ada di USK</p>
+                <a href="#" class="inline-flex items-center text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline">Read more about our app 
+                    <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
             </div>
-            <div class="Frame4" style="width: 388.57px; height: 64.14px; padding-left: 20px; padding-right: 20px; padding-top: 7px; padding-bottom: 7px; left: 48.71px; top: 328.43px; position: absolute; background: linear-gradient(180deg, #0F21C5 0%, rgba(1, 2.23, 13.31, 0.07) 93%, rgba(0, 0, 0, 0) 100%); border-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-        <button type="submit" class="Masuk" style="color: white; font-size: 20px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Masuk</button>
-    </div> 
-            <div class="Frame7" style="width: 388.57px; height: 64.14px; padding-left: 20px; padding-right: 20px; padding-top: 7px; padding-bottom: 7px; left: 48.71px; top: 230.01px; position: absolute; background: #FFFFFF; border-radius: 20px; border: 2px #FFFFFF; solid; display: flex; align-items: center;">
-    <div class="LockIcon" style="width: 24px; height: 24px; padding-left: 2px; padding-right: 2px; padding-top: 4px; padding-bottom: 4px; justify-content: center; align-items: center; display: flex">
-        <img src="../feather/lock.svg" alt="" style="width: 16px; height: 21px; ">
-    </div>
-    <input type="password" id="password" name="password" placeholder="Kata Sandi" style="flex: 1; padding: 10px; color: #000000; font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-    <div class="HideIcon" style="width: 24px; height: 24px; cursor: pointer;">
-    </div>
-</div>
-
-<div class="Frame2" style="width: 388.57px; height: 64.14px; padding-left: 20px; padding-right: 20px; padding-top: 7px; padding-bottom: 7px; left: 48.71px; top: 131.59px; position: absolute; background: #FFFFFF; border-radius: 20px; border: 2px #FFFFFF solid; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
-    <div class="IcOutlineEmail" style="width: 24px; height: 24px; padding-left: 2px; padding-right: 2px; padding-top: 4px; padding-bottom: 4px; justify-content: center; align-items: center; display: flex">
-        <img src="../feather/mail.svg" alt="" style="width: 16px; height: 21px;">
-    </div>
-    <input type="email" id="email" name="email" placeholder="Email" style="width: 100%; color: #000000; font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word">
-</div>
-
-            <div class="LogoTerang" style="width: 157.47px; height: 49.76px; padding-right: 32.47px; left: 164.27px; top: 33.18px; position: absolute; border-radius: 20px; justify-content: flex-start; align-items: center; display: inline-flex">
-                <div class="LogIn" style="color: black; font-size: 45px; font-family: Poppins; font-weight: 700; word-wrap: break-word">Login</div>
+            <div>
+                <div class="w-full p-6 space-y-8 bg-white rounded-lg shadow-xl lg:max-w-xl sm:p-8 dark:bg-gray-800">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                        Sign in to Flowbite
+                    </h2>
+                    <form class="mt-8 space-y-6" method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required>
+                        </div>
+                        <div>
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="remember" aria-describedby="remember" name="remember" type="checkbox" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" required>
+                            </div>
+                            <div class="ml-3 text-sm">
+                            <label for="remember" class="font-medium text-gray-500 dark:text-gray-400">Remember this device</label>
+                            </div>
+                            <a href="#" class="ml-auto text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Lost Password?</a>
+                        </div>
+                        <button type="submit" class="w-full px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login to your account</button>
+                    </form>
+                        <div class="text-sm font-medium text-gray-900 dark:text-white">
+                            Not registered yet? <a href="/sikm/register" class="text-blue-600 hover:underline dark:text-blue-500">Create account</a>
+                        </div>
+                </div>
             </div>
-            <div class="CloseButton" style="width: 39px; height: 35px; left: 436px; top: 15px; position: absolute; cursor: pointer;">
-    <div class="Rectangle30" style="width: 39px; height: 35px; left: 0px; top: 0px; position: absolute; background: #07294D; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-    </div>
-    <a href="/">
-        <div class="XIcon" style="width: 24px; height: 24px; position: absolute; top: 50%; left: 60%; transform: translate(-50%, -50%); color: #D9D9D9; font-size: 24px; line-height: 1; font-weight: bold;">X</div>
-    </a>
-</div>
         </div>
-    </form>
-
+    </section>
 </body>
 </html>
