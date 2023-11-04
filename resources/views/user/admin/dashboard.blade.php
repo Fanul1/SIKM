@@ -62,7 +62,7 @@
                     </td>
                     <td class="px-4 py-2 text-center border">
                         <div class="flex justify-center">
-                            @if ($user->is_editor === '0')
+                            @if ($user->role === '0')
                             <form method="POST" action="{{ url("/dashboard/$user->name/valid") }}">
                                 @csrf @method('PUT')
                                 <button class="px-4 py-2 mr-2 font-bold text-white bg-blue-900 rounded hover:bg-blue-700">Validasi</button>
@@ -98,7 +98,7 @@
                 $count = 1;
                 @endphp
                 @foreach ($users as $user)
-                @if($user->is_editor === '1')
+                @if($user->role === '2')
                 <tr class="bg-stone-100">
                     <td class="px-4 py-2 text-center border">{{ $count++}}</td>
                     <td class="px-4 py-2 text-center border">{{ $user->name }}</td>
@@ -148,5 +148,9 @@
         © 2023. Made By Kelompok 9
     </footer>
 </body>
-
+<script>
+    @if(session('success'))
+        alert("{{ session('success') }}");
+    @endif
+</script>
 </html>

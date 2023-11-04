@@ -2,7 +2,7 @@
 class="fixed top-0 bottom-0 right-0 z-50 hidden w-full max-h-full transition-all duration-300 md:w-1/3">
 <div class="h-full overflow-y-auto">
     <div class="p-4 bg-white rounded-lg">
-        <form enctype="multipart/form-data" method="post" action="/dashboard/update-profile">
+        <form enctype="multipart/form-data" method="post" action="/dashboarduser/update-profile">
             @csrf
             <div class="py-1">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">Perbarui Profil</h2>
@@ -54,7 +54,7 @@ class="fixed top-0 bottom-0 right-0 z-50 hidden w-full max-h-full transition-all
             </div>
         
             <div class="flex items-center justify-end mt-6 gap-x-6">
-                <button type="menu" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+                <button id="cancelButton" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
                 <button type="submit" class="px-3 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
             </div>
         </form>

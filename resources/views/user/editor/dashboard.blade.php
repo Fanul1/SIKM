@@ -5,9 +5,9 @@
 @section('content')
     <div class="flex items-center justify-between">
         Selamat Datang {{ auth()->user()->name }} di Dashboard Anda
-        @if (auth()->user()->is_editor !== '0')
+        @can('editor')
             , Anda telah tervalidasi sebagai editor
-        @endif
+        @endcan
         <button data-modal-target="editakun-modal" data-modal-toggle="editakun-modal"
             class="flex items-center text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md text-sm px-3 py-1.5 text-center dark:bg-green-600 dark:hover-bg-green-700 dark:focus:ring-green-800" type="button">
             <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@
     </div>
     @include('user.editor.updprof')
     <!-- modal edit akun -->
-    @if (auth()->user()->is_editor !== '0')
+    @can('editor')
     <section class="bg-white dark:bg-gray-900">
         <div class="max-w-6xl px-1 py-8 mx-auto lg:py-8">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Membuat Template UKM</h2>
@@ -136,5 +136,5 @@
             </div>
         </div>
     </section>
-    @endif
+    @endcan
 @endsection

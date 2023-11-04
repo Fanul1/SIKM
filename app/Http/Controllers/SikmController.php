@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class SikmController extends Controller
 {
@@ -18,12 +19,12 @@ class SikmController extends Controller
 
     public function login()
     {
-        return view('user.login');
+        return view('auth.login');
     }
     
     public function register()
     {
-        return view('user.register');
+        return view('auth.register');
     }
 
     public function logout()
@@ -45,7 +46,7 @@ class SikmController extends Controller
             $request->session()->regenerate();
             
             // Redirect users based on their roles
-            if (Auth::user()->role === 1) {
+            if (Gate::allows('admin')) {
                 return redirect()->intended('/dashboard');
             } else {
                 return redirect()->intended('/dashboarduser');
@@ -70,10 +71,10 @@ class SikmController extends Controller
         $request->session()->flash('success', 'Berhasil daftar! Selamat datang.');
         
         // Redirect users based on their roles
-        if ($user->role === 1) {
-            return redirect('/dashboard');
+        if (Gate::allows('admin')) {
+            return redirect('/dashboard')->with('success', 'Selamat datang di dashboard admin!');
         } else {
-            return redirect('/dashboarduser');
+            return redirect('/dashboarduser')->with('success', 'Selamat datang di dashboard user!');
         }
     }
 
@@ -123,5 +124,15 @@ class SikmController extends Controller
             'users' => $users
         ];
         return view('user.admin.user-detail', $view_data);
+    }
+
+    public function dashadmin()
+    {
+        $this->authorize('admin');
+        $users = DB::table('users')
+            ->select('*')
+            ->where('role', '!=', '1')
+            ->get();   
+        return view('user.admin.dashboard', compact('users'));
     }
 }

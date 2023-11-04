@@ -1,0 +1,14 @@
+body::before {
+    content: "";
+    background-image: url('/assets/beautiful-golden-field-with-amazing-cloudy.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px); /* Efek blur */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* Mengatur posisi z-indeks di belakang konten */
+}

@@ -46,4 +46,18 @@
         }
     });
 </script>
+<script>
+    @if(session('success'))
+        alert("{{ session('success') }}");
+    @endif
+</script>
+<script>
+    document.getElementById('cancelButton').onclick = function() {
+        // Get the modal element by ID
+        var modal = document.getElementById('editakun-modal');
+        
+        // Redirect to "/dashboarduser"
+        window.location.href = '/dashboarduser';
+    };
+</script>
 </html>

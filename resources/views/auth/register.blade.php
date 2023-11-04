@@ -6,30 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>SIKM - Register</title>
-    <style>
-        body {
-            background-image: url('/assets/beautiful-golden-field-with-amazing-cloudy.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        /* Tambahkan efek blur ke latar belakang */
-        body::before {
-            content: "";
-            background-image: inherit; /* Mengambil gambar latar belakang dari body */
-            background-size: inherit;
-            background-position: inherit;
-            background-repeat: inherit;
-            filter: blur(5px); /* Tambahkan blur ke latar belakang */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Menempatkan z-index di belakang konten */
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 </head>
 <body>
     <section>

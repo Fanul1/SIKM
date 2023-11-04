@@ -6,22 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>SIKM - Login</title>
-    <style>
-        body::before {
-            content: "";
-            background-image: url('/assets/beautiful-golden-field-with-amazing-cloudy.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            filter: blur(5px); /* Efek blur */
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1; /* Mengatur posisi z-indeks di belakang konten */
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
     <section class="">
@@ -67,4 +52,9 @@
         </div>
     </section>
 </body>
+<script>
+    @if(session('loginError'))
+        alert("{{ session('loginError') }}");
+    @endif
+</script>
 </html>
