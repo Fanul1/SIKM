@@ -76,4 +76,52 @@ class SikmController extends Controller
             return redirect('/dashboarduser');
         }
     }
+
+    public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+    
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'numberphone' => 'nullable|string',
+            'email' => 'required|string|email|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|min:3|confirmed',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+        ]);
+    
+        // Remove password and password confirmation from $data if they are not provided.
+        if (empty($data['password'])) {
+            unset($data['password']);
+            unset($data['password_confirmation']);
+        } else {
+            $data['password'] = Hash::make($data['password']);
+        }
+    
+        // Check if the phone number is provided and not empty.
+        if (!empty($data['numberphone'])) {
+            $user->numberphone = $data['numberphone'];
+        }
+    
+        // Handle the avatar upload
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('avatars', 'public');
+            $data['avatar'] = $avatarPath;
+        }
+    
+        $user->update($data);
+    
+        return redirect('/dashboarduser')->with('success', 'Profil Anda telah diperbarui.');
+    }
+
+    public function detail(string $name)
+    {
+        $users = DB::table('users')
+            ->select('*')
+            ->where('name', $name)
+            ->first();
+        $view_data = [
+            'users' => $users
+        ];
+        return view('user.admin.user-detail', $view_data);
+    }
 }

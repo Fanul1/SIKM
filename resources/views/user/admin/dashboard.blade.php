@@ -58,12 +58,21 @@
                     <td class="px-4 py-2 text-center border">{{ $user->name }}</td>
                     <td class="px-4 py-2 text-center border">{{ $user->email }}</td>
                     <td class="px-4 py-2 text-center border">
-                        <a href="" class="px-4 py-2 bg-green-600 rounded-xl">Detail</a></td>
+                        <a href="{{url ("/dashboard/$user->name")}}" class="px-4 py-2 text-white bg-green-600 rounded-xl">Detail</a>
+                    </td>
                     <td class="px-4 py-2 text-center border">
-                        <button
-                            class="px-4 py-2 mr-2 font-bold text-white bg-blue-900 rounded hover:bg-blue-700">Validasi</button>
-                        <button
-                            class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Hapus</button>
+                        <div class="flex justify-center">
+                            @if ($user->is_editor === '0')
+                            <form method="POST" action="{{ url("/dashboard/$user->name/valid") }}">
+                                @csrf @method('PUT')
+                                <button class="px-4 py-2 mr-2 font-bold text-white bg-blue-900 rounded hover:bg-blue-700">Validasi</button>
+                            </form>
+                            @endif
+                            <form action="{{ url('/dashboard/' . $user->name) }}" method="POST">
+                                @csrf @method('DELETE')
+                                <button class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Hapus</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
@@ -85,10 +94,15 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                $count = 1;
+                @endphp
+                @foreach ($users as $user)
+                @if($user->is_editor === '1')
                 <tr class="bg-stone-100">
-                    <td class="px-4 py-2 text-center border">1</td>
-                    <td class="px-4 py-2 text-center border">Fanul</td>
-                    <td class="px-4 py-2 text-center border">fanul@gmail.com</td>
+                    <td class="px-4 py-2 text-center border">{{ $count++}}</td>
+                    <td class="px-4 py-2 text-center border">{{ $user->name }}</td>
+                    <td class="px-4 py-2 text-center border">{{ $user->email }}</td>
                     <td class="px-4 py-2 text-center border">Badminton</td>
                     <td class="px-4 py-2 text-center border">Editor</td>
                     <td class="px-4 py-2 text-center border">
@@ -96,6 +110,8 @@
                             class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Hapus</button>
                     </td>
                 </tr>
+                @endif
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -107,8 +123,9 @@
                 <tr style="color: white" class="bg-black">
                     <th class="px-4 py-2 text-center border">No</th>
                     <th class="px-4 py-2 text-center border">Nama UKM</th>
-                    <th class="px-4 py-2 text-center border">Kontak</th>
+                    <th class="px-4 py-2 text-center border">Kontak UKM</th>
                     <th class="px-4 py-2 text-center border">Nama Editor</th>
+                    <th class="px-4 py-2 text-center border">Detail</th>
                     <th class="px-4 py-2 text-center border">Aksi</th>
                 </tr>
             </thead>
@@ -118,6 +135,7 @@
                     <td class="px-4 py-2 text-center border">Badminton</td>
                     <td class="px-4 py-2 text-center border">0899913111</td>
                     <td class="px-4 py-2 text-center border">Fanul</td>
+                    <td class="px-4 py-2 text-center border"><a href="" class="px-4 py-2 bg-green-600 rounded-xl">Detail</a></td>
                     <td class="px-4 py-2 text-center border">
                         <button
                             class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Hapus</button>
