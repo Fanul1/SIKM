@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\SikmController;
-use App\Http\Controllers\UkmController;
+use App\Http\Controllers\LoginRegController;
+use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\DashboardUserController;
 use Providers\AuthServiceProvider;
-use Illuminate\Support\Facades\Gate;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,65 +21,40 @@ use Illuminate\Support\Facades\Gate;
 Route::get('sikm', [SikmController::class, 'home']);
 Route::get('/', [SikmController::class, 'home']);
 
-Route::delete('/dashboard/{name}', function ($name) {
-    if (Gate::allows('admin')) {
-    DB::table('users')->where('name', $name)->delete();
-    return redirect('/dashboard')->with('success', 'Account deleted successfully');
-}});
+Route::delete('/dashboard/{name}', [DashboardAdminController::class, 'delete']);
 
-Route::put('/dashboard/{name}/valid', function ($name) {
-    if (Gate::allows('admin')) {
-    DB::table('users')
-        ->where('name', $name)
-        ->update(['role' => '2']);
-    return redirect('/dashboard')->with('success', 'Account approved successfully');
-}});
+Route::put('/dashboard/{name}/valid', [DashboardAdminController::class, 'validasi']);
 
+Route::get('/dashboard', [DashboardAdminController::class, 'dashadmin']);
 
-Route::get('/dashboard', [SikmController::class, 'dashadmin']);
+Route::get('/dashboarduser', [DashboardUserController::class, 'dashboarduser'])->middleware('auth');
 
-Route::get('/dashboarduser', function () {
-    if (auth()->user()->role !== '1') {
-        return view('user.editor.dashboard');
-    } else{
-        abort(403);
-    }
-})->middleware('auth');
+Route::get('/editprofukm', [DashboardUserController::class, 'editprofukm']);
 
-Route::get('/editprofukm', function() {
-    if (Gate::allows('editor')) {
-    return view('user.editor.ukm.profilukm');
-    } else{
-        abort(403);
-    }
-});
+Route::get('/editkontakukm', [DashboardUserController::class, 'editkontakukm']);
 
-Route::get('/editkontakukm', function() {
-    if (Gate::allows('editor')) {
-        return view('user.editor.ukm.kontakukm');
-        } else{
-            abort(403);
-        }
-});
+Route::get('/editberitaukm', [DashboardUserController::class, 'editberitaukm']);
 
-Route::get('/editberitaukm', function() {
-    if (Gate::allows('editor')) {
-        return view('user.editor.ukm.beritaukm');
-        } else{
-            abort(403);
-        }
-});
+Route::post('/createukm', [DashboardUserController::class, 'create']);
 
-Route::get('sikm/login', [SikmController::class, 'login'])->name('login')->middleware('guest');
-Route::post('sikm/login', [SikmController::class, 'authenticate']);
-Route::post('sikm/logout', [SikmController::class, 'logout'])->name('logout');
+Route::get('sikm/login', [LoginRegController::class, 'login'])->name('login')->middleware('guest');
+Route::post('sikm/login', [LoginRegController::class, 'authenticate']);
+Route::post('sikm/logout', [LoginRegController::class, 'logout'])->name('logout');
 
-Route::get('sikm/register', [SikmController::class, 'register'])->middleware('guest');
-Route::post('sikm/register', [SikmController::class, 'store'])->name('store');
+Route::get('sikm/register', [LoginRegController::class, 'register'])->middleware('guest');
+Route::post('sikm/register', [LoginRegController::class, 'store'])->name('store');
 
-Route::get('/ukm', [UkmController::class, 'ukm']);
-Route::get('/berita', [UkmController::class, 'berita']);
+Route::get('/ukm', [SikmController::class, 'ukm']);
+Route::get('/berita', [SikmController::class, 'berita']);
 
-Route::post('/dashboarduser/update-profile', [SikmController::class, 'updateProfile'])->middleware('auth');
+Route::post('/dashboarduser/update-profile', [DashboardUserController::class, 'updateProfile'])->middleware('auth');
 
-Route::get('/dashboard/{name}', [SikmController::class, 'detail'])->name('user.detail');
+Route::post('/updateukm', [DashboardUserController::class, 'updateukm']);
+
+Route::get('/dashboard/{name}', [DashboardAdminController::class, 'detail'])->name('user.detail');
+
+Route::delete('/deleteEditor/{user}', [DashboardAdminController::class, 'deleteEditor'])->name('deleteEditor');
+Route::put('/suspendEditor/{user}', [DashboardAdminController::class, 'suspendEditor'])->name('suspendEditor');
+Route::put('/unsuspendEditor/{user}', [DashboardAdminController::class, 'unsuspendEditor'])->name('unsuspendEditor');
+
+Route::delete('/hapusukm/{id}', [DashboardAdminController::class, 'hapusukm'])->name('hapusukm');

@@ -98,16 +98,39 @@
                 $count = 1;
                 @endphp
                 @foreach ($users as $user)
-                @if($user->role === '2')
+                @if($user->role === '2'|| $user->role === '3')
                 <tr class="bg-stone-100">
                     <td class="px-4 py-2 text-center border">{{ $count++}}</td>
                     <td class="px-4 py-2 text-center border">{{ $user->name }}</td>
                     <td class="px-4 py-2 text-center border">{{ $user->email }}</td>
-                    <td class="px-4 py-2 text-center border">Badminton</td>
+                    <td class="px-4 py-2 text-center border">
+                        @if($user->ukm)
+                            {{ $user->ukm->name }} <!-- Menampilkan nama UKM jika ada -->
+                        @else
+                            Belum memiliki UKM <!-- Menampilkan pesan jika tidak memiliki UKM -->
+                        @endif
+                    </td>
                     <td class="px-4 py-2 text-center border">Editor</td>
                     <td class="px-4 py-2 text-center border">
-                        <button
-                            class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Hapus</button>
+                        <form action="{{ route('deleteEditor', $user->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Hapus</button>
+                        </form>
+                        @if ($user->role === '2')
+                        <form action="{{ route('suspendEditor', $user->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="px-4 py-2 ml-3 font-bold text-white bg-yellow-500 rounded hover:bg-yellow-700">Cabut Izin</button>
+                        </form>
+                        @endif
+                        @if($user->role === '3')
+                        <form action="{{ route('unsuspendEditor', $user->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="px-4 py-2 font-bold text-white bg-green-500 rounded hover.bg-green-700 ml-3">Bebaskan</button>
+                        </form> 
+                        @endif                   
                     </td>
                 </tr>
                 @endif
@@ -130,17 +153,48 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($users as $user)
                 <tr class="bg-stone-100">
-                    <td class="px-4 py-2 text-center border">1</td>
-                    <td class="px-4 py-2 text-center border">Badminton</td>
-                    <td class="px-4 py-2 text-center border">0899913111</td>
-                    <td class="px-4 py-2 text-center border">Fanul</td>
-                    <td class="px-4 py-2 text-center border"><a href="" class="px-4 py-2 bg-green-600 rounded-xl">Detail</a></td>
                     <td class="px-4 py-2 text-center border">
-                        <button
-                            class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Hapus</button>
+                        @if ($user->ukm)
+                            {{ $loop->iteration }}
+                        @endif
+                    </td>
+                    <td class="px-4 py-2 text-center border">
+                        @if ($user->ukm)
+                            {{ $user->ukm->name }}
+                        @endif
+                    </td>
+                    <td class="px-4 py-2 text-center border">
+                        @if ($user->ukm)
+                            {{ $user->ukm->phone_number }}
+                        @endif
+                    </td>
+                    <td class="px-4 py-2 text-center border">
+                        @if ($user->ukm)
+                            {{ $user->name }}
+                        @endif
+                    </td>
+                    <td class="px-4 py-2 text-center border">
+                        @if ($user->ukm)
+                            <button type="button" class="px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-700">
+                                Detail
+                            </button>
+                        @endif
+                    </td>
+                    <td class="px-4 py-2 text-center border">
+                        @if ($user->ukm)
+                            <form action="{{ route('hapusukm', ['id' => $user->ukm->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">
+                                    Hapus
+                                </button>
+                            </form>
+                        @endif
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

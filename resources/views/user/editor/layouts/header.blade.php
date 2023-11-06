@@ -14,7 +14,15 @@
                 </button>
                 <a href="/ukm" class="flex ml-2 md:mr-24">
                     <img src= {{ asset('assets/logo-menwa.png') }} class="h-8 mr-3" alt="UKM Logo" />
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">NAMA UKM</span>
+                    @if(auth()->user()->ukm)
+                        <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                            {{ auth()->user()->ukm->name }}
+                        </span>
+                    @else
+                        <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                            NAMA UKM
+                        </span>
+                    @endif
                 </a>
             </div>
 

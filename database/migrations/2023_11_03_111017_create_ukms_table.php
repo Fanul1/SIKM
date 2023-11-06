@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('ukms', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');    
+            $table->string('name')->nullable(false);
+            $table->string('email')->nullable();
+            $table->string('category')->nullable(); // Ini adalah kolom kategori
+            $table->string('phone_number')->nullable();
+            $table->text('alamat')->nullable();
+            $table->text('tujuan')->nullable();
+            $table->text('visi')->nullable();
+            $table->text('misi')->nullable();
+            $table->text('sejarah')->nullable();
+            $table->string('ukm_logo')->nullable();
+            $table->string('ukm_gambar')->nullable();
             $table->timestamps();
         });
     }

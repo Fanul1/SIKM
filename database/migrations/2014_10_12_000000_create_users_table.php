@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('numberphone')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('role')->default('0'); // 0 for user, 1 for admin, 2 for editor
+            $table->string('role')->default('0'); // 0 for user, 1 for admin, 2 for editor, 3 for suspend editor
             $table->rememberToken();
             $table->timestamps();
         });        
