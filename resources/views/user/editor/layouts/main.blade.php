@@ -60,4 +60,5 @@
         window.location.href = '/dashboarduser';
     };
 </script>
+<script src="{{ asset('js/editberita.js') }}"></script>
 </html>

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Gate;
+use App\Models\Berita;
 
 class DashboardUserController extends Controller
 {
@@ -73,10 +74,98 @@ class DashboardUserController extends Controller
     public function editberitaukm()
     {
         if (Gate::allows('editor')) {
-            return view('user.editor.ukm.beritaukm');
+            $beritas = Berita::all(); // Replace 'NewsArticle' with your actual model name
+            return view('user.editor.ukm.beritaukm', compact('beritas'));
             } else{
              abort(403);
             }
+    }
+
+    public function showDetail($id)
+    {
+        // Handle the "Detail" button click
+        // Fetch the berita by its ID and show it
+        $berita = Berita::findOrFail($id);
+        return view('user.editor.ukm.detailberita', compact('berita'));
+    }
+
+    public function editBerita($id)
+    {
+        // Handle the "Edit" button click
+        // Fetch the berita by its ID and show the edit form
+        $berita = Berita::findOrFail($id);
+        return view('user.editor.ukm.editberita', compact('berita'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'judul' => 'required|string',
+            'category' => 'required|string',
+            'deskripsi' => 'required|string',
+            'tanggal' => 'required|date',
+        ]);
+
+        $berita = Berita::find($id);
+
+        if (!$berita) {
+            return redirect()->back()->with('error', 'Berita not found');
+        }
+
+        // Update the fields from the request
+        $berita->judul = $request->input('judul');
+        $berita->category = $request->input('category');
+        $berita->deskripsi = $request->input('deskripsi');
+        $berita->tanggal = $request->input('tanggal');
+
+        // If a new image file is uploaded, update the image
+        if ($request->hasFile('gambar')) {
+            $this->validate($request, [
+                'gambar' => 'image|mimes:jpeg,png,jpg,gif',
+            ]);
+            $gambarPath = $request->file('gambar')->store('ukm_berita', 'public');
+            $berita->gambar = $gambarPath;
+        }
+
+        $berita->save();
+
+        return redirect()->route('berita.detail', ['id' => $berita->id])->with('success', 'Berita updated successfully');
+    }
+
+    public function deleteBerita($id)
+    {
+        // Delete the berita by its ID
+        $berita = Berita::findOrFail($id);
+        $berita->delete();   
+        return redirect()->back()->with('success', 'Berita berhasil dihapus');
+        
+    }
+
+    public function storeberita(Request $request)
+    {
+        $this->validate($request, [
+            'judul' => 'required|string',
+            'category' => 'required|string',
+            'deskripsi' => 'required|string',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'tanggal' => 'required|date',
+        ]);
+
+        // Simpan gambar
+        if ($request->hasFile('gambar')) {
+            $gambarPath = $request->file('gambar')->store('ukm_berita', 'public');
+        }
+
+        $berita = new Berita();
+        $berita->ukm_id = auth()->user()->ukm->id;
+        $berita->judul = $request->judul;
+        $berita->category = $request->category;
+        $berita->deskripsi = $request->deskripsi;
+        $berita->gambar = $gambarPath;
+        $berita->tanggal = $request->tanggal;
+        $berita->save();
+
+        return redirect('/editberitaukm')->with('success', 'Berita berhasil ditambahkan');
     }
 
     public function create(Request $request)

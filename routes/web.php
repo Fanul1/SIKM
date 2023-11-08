@@ -34,6 +34,12 @@ Route::get('/editprofukm', [DashboardUserController::class, 'editprofukm']);
 Route::get('/editkontakukm', [DashboardUserController::class, 'editkontakukm']);
 
 Route::get('/editberitaukm', [DashboardUserController::class, 'editberitaukm']);
+Route::post('/addberitaukm', [DashboardUserController::class, 'storeberita']);
+Route::get('/editberita/{id}', [DashboardUserController::class, 'showDetail'])->name('berita.detail');
+Route::get('/editberita/{id}/edit', [DashboardUserController::class, 'editBerita'])->name('berita.edit');
+Route::put('/editberita/{id}', [DashboardUserController::class, 'update'])->name('berita.update');
+Route::delete('/editberita/{id}', [DashboardUserController::class, 'deleteBerita'])->name('berita.delete');
+
 
 Route::post('/createukm', [DashboardUserController::class, 'create']);
 
