@@ -209,7 +209,7 @@
                     <td class="px-4 py-2 text-center border">
                         @if ($user->ukm)
                             <button type="button" class="px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-700">
-                                Detail
+                                <a href="{{ route('sikm.ukm', ['id' => $user->ukm->id]) }}">Detail</a>
                             </button>
                         @endif
                     </td>

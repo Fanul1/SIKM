@@ -12,7 +12,7 @@
                             d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                     </svg>
                 </button>
-                <a href="/ukm" class="flex ml-2 md:mr-24">
+                <a href="{{ route('sikm.ukm', ['id' => $ukm->id]) }}" class="flex ml-2 md:mr-24">
                     @if($ukm)
                         <img src="{{ $ukm->ukm_logo ? asset('storage/' . $ukm->ukm_logo) : asset('feather/image.svg') }}" class="h-8 mr-3" alt="UKM Logo" />
                         <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
@@ -65,6 +65,9 @@
                             {{ auth()->user()->email }}
                         </p>
                     </div>
+                    <li>
+                        <a href="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Homepage</a>
+                    </li>
                     <ul class="py-1" role="none">
                         <li>
                             <form method="POST" action="{{ route('logout') }}">
