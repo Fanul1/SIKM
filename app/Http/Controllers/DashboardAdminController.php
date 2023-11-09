@@ -50,6 +50,7 @@ class DashboardAdminController extends Controller
         // Hapus akun editor beserta UKMnya
         if ($user->ukm) {
             // Hapus UKM terlebih dahulu jika ada
+            $user->ukm->beritas()->delete();
             $user->ukm->delete();
         }
         $user->delete();
