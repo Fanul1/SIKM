@@ -11,7 +11,7 @@ class SikmController extends Controller
     public function index()
     {
         $ukms = Ukm::all();
-        return view('SIKM.home', compact('ukms'));
+        return view('SIKM.homepage', compact('ukms'));
     }    
 
     public function showUkm($id)

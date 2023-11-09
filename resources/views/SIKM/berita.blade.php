@@ -36,7 +36,7 @@
                     <div class="flex items-center mb-6">
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (23).jpg" class="h-8 mr-2 rounded-full" alt="avatar" loading="lazy" />
                         <div>
-                          <span> Published <u>15.07.2020</u> by </span>
+                          <span> Published <u>{{ $berita->tanggal }}</u> by </span>
                           <a href="#!" class="font-medium">{{ $ukm->name }}</a>
                         </div>
                     </div>
