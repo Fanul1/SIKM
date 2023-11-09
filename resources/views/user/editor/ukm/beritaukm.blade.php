@@ -17,10 +17,10 @@
                 <label for="category" class="block text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
                 <select id="category" name="category" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white">
                     <option selected="">Pilih kategori</option>
-                    <option value="AG">Keagamaan</option>
-                    <option value="OL">Olahraga</option>
-                    <option value="AK">Akademik</option>
-                    <option value="KE">Kesenian</option>
+                    <option value="Keagamaan">Keagamaan</option>
+                    <option value="Olahraga">Olahraga</option>
+                    <option value="Akademik">Akademik</option>
+                    <option value="Kesenian">Kesenian</option>
                 </select>
             </div>
             <div class="mt-4">

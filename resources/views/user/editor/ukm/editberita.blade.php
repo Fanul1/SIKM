@@ -18,10 +18,10 @@
             <label for="category" class="block text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
             <select id="category" name="category" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white">
                 <option selected="">Pilih kategori</option>
-                <option value="AG" {{ $berita->category === 'AG' ? 'selected' : '' }}>Keagamaan</option>
-                <option value="OL" {{ $berita->category === 'OL' ? 'selected' : '' }}>Olahraga</option>
-                <option value="AK" {{ $berita->category === 'AK' ? 'selected' : '' }}>Akademik</option>
-                <option value="KE" {{ $berita->category === 'KE' ? 'selected' : '' }}>Kesenian</option>
+                <option value="Keagamaan" {{ $berita->category === 'Keagamaan' ? 'selected' : '' }}>Keagamaan</option>
+                <option value="Olahraga" {{ $berita->category === 'Olahraga' ? 'selected' : '' }}>Olahraga</option>
+                <option value="Akademik" {{ $berita->category === 'Akademik' ? 'selected' : '' }}>Akademik</option>
+                <option value="Kesenian" {{ $berita->category === 'Kesenian' ? 'selected' : '' }}>Kesenian</option>
             </select>
         </div>
         <div class="mt-4">

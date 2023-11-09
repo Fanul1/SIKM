@@ -101,11 +101,11 @@ class DashboardUserController extends Controller
         }
     }
 
-
     public function editberitaukm()
     {
         if (Gate::allows('editor')) {
-            $beritas = Berita::all(); // Replace 'NewsArticle' with your actual model name
+            $ukm = Auth::user()->ukm;
+            $beritas = Berita::where('ukm_id', $ukm->id)->get();            
             return view('user.editor.ukm.beritaukm', compact('beritas'));
             } else{
              abort(403);
@@ -273,8 +273,8 @@ class DashboardUserController extends Controller
 
     public function destroy(Ukm $ukm)
     {
+        $ukm->beritas()->delete();
         $ukm->delete();
-        
         // Redirect ke halaman yang sesuai (misalnya, halaman dashboard)
         return redirect('/dashboarduser')->with('success', 'UKM berhasil dihapus');
     }

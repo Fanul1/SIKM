@@ -25,10 +25,10 @@
                     <select id="category" name="category"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option selected="">Pilih kategori</option>
-                        <option value="AG">Keagamaan</option>
-                        <option value="OL">Olahraga</option>
-                        <option value="AK">Akademik</option>
-                        <option value="KE">Kesenian</option>
+                        <option value="Keagamaan">Keagamaan</option>
+                        <option value="Olahraga">Olahraga</option>
+                        <option value="Akademik">Akademik</option>
+                        <option value="Kesenian">Kesenian</option>
                     </select>
                 </div>
                 <div>
