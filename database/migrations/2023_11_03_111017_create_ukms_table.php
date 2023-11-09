@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ukms', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');    
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');    
             $table->string('name')->nullable(false);
             $table->string('email')->nullable();
             $table->string('category')->nullable(); // Ini adalah kolom kategori
@@ -26,6 +26,11 @@ return new class extends Migration
             $table->text('sejarah')->nullable();
             $table->string('ukm_logo')->nullable();
             $table->string('ukm_gambar')->nullable();
+            $table->string('name_ketua')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
             $table->timestamps();
         });
     }

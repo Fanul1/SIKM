@@ -1,3 +1,12 @@
+<button data-modal-target="editakun-modal" data-modal-toggle="editakun-modal"
+class="flex items-center text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md text-sm px-3 py-1.5 text-center dark:bg-green-600 dark:hover-bg-green-700 dark:focus:ring-green-800" type="button">
+<svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor" viewBox="0 0 20 18">
+    <path d="M6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm-1.391 7.361.707-3.535a3 3 0 0 1 .82-1.533L7.929 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h4.259a2.975 2.975 0 0 1-.15-1.639ZM8.05 17.95a1 1 0 0 1-.981-1.2l.708-3.536a1 1 0 0 1 .274-.511l6.363-6.364a3.007 3.007 0 0 1 4.243 0 3.007 3.007 0 0 1 0 4.243l-6.365 6.363a1 1 0 0 1-.511.274l-3.536.708a1.07 1.07 0 0 1-.195.023Z" />
+</svg>
+<span class="pl-2">Edit Akun</span>
+</button>
+
 <div id="editakun-modal" tabindex="-1" aria-hidden="true"
 class="fixed top-0 bottom-0 right-0 z-50 hidden w-full max-h-full transition-all duration-300 md:w-1/3">
 <div class="h-full overflow-y-auto">
@@ -54,8 +63,8 @@ class="fixed top-0 bottom-0 right-0 z-50 hidden w-full max-h-full transition-all
             </div>
         
             <div class="flex items-center justify-end mt-6 gap-x-6">
-                <button id="cancelButton" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
-                <button type="submit" class="px-3 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
+                <button data-modal-hide="editakun-modal" type="button" class="text-sm font-semibold leading-6 text-gray-900 bg-red-600">Cancel</button>
+                <button data-modal-hide="editakun-modal" type="submit" class="px-3 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
             </div>
         </form>
     </div>

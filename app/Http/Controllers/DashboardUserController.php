@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Berita;
+use App\Models\Ukm;
 
 class DashboardUserController extends Controller
 {
@@ -47,7 +48,9 @@ class DashboardUserController extends Controller
 
     public function dashboarduser () {
         if (auth()->user()->role !== '1') {
-            return view('user.editor.dashboard');
+            $user = auth()->user();
+            $ukm = $user->ukm;
+            return view('user.editor.dashboard', compact('ukm'));
         } else{
             abort(403);
         }
@@ -56,20 +59,48 @@ class DashboardUserController extends Controller
     public function editprofukm() 
     {
         if (Gate::allows('editor')) {
-            return view('user.editor.ukm.profilukm');
-            } else{
-                abort(403);
-            }
+            $ukm = auth()->user()->ukm;
+            if ($ukm) {
+                // Pass the UKM data to the view
+                return view('user.editor.ukm.profilukm', compact('ukm'));
+            }            
+        } else{
+            abort(403);
+        }
     }
 
     public function editkontakukm()
     {
         if (Gate::allows('editor')) {
-            return view('user.editor.ukm.kontakukm');
+            $ukm = auth()->user()->ukm;
+            return view('user.editor.ukm.kontakukm', ['ukm' => $ukm]);
             } else{
                 abort(403);
             }
     }
+
+    public function updatekontakukm(Request $request)
+    {
+        if (Gate::allows('editor')) {
+            $user = Auth::user();
+            $ukm = $user->ukm;
+
+            $ukm->update([
+                'name_ketua' => $request->input('nama_ketua'),
+                'email' => $request->input('email'),
+                'phone_number' => $request->input('number_phone'),
+                'instagram' => $request->input('instagram'),
+                'youtube' => $request->input('youtube'),
+                'facebook' => $request->input('facebook'),
+                'twitter' => $request->input('twitter'),
+            ]);
+
+            return redirect('/dashboarduser')->with('success', 'Kontak UKM berhasil diperbarui.');
+        } else {
+            abort(403);
+        }
+    }
+
 
     public function editberitaukm()
     {
@@ -238,5 +269,13 @@ class DashboardUserController extends Controller
         $ukm->save();
 
         return redirect('/dashboarduser')->with('success', 'Data UKM Anda berhasil diperbarui.');
+    }
+
+    public function destroy(Ukm $ukm)
+    {
+        $ukm->delete();
+        
+        // Redirect ke halaman yang sesuai (misalnya, halaman dashboard)
+        return redirect('/dashboarduser')->with('success', 'UKM berhasil dihapus');
     }
 }

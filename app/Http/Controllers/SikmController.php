@@ -3,21 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ukm;
+use App\Models\Berita;
 
 class SikmController extends Controller
 {
-    public function home()
+    public function index()
     {
-        return view('homepage');
-    }
-    
-    public function ukm()
+        $ukms = Ukm::all();
+        return view('SIKM.home', compact('ukms'));
+    }    
+
+    public function showUkm($id)
     {
-        return view('ukm.ukm');
+        $ukm = Ukm::find($id);
+        $berita = Berita::where('ukm_id', $ukm->id)->first(); // Mengambil berita pertama dari UKM ini, sesuaikan dengan logika bisnis Anda.
+        return view('SIKM.ukm', compact('ukm', 'berita'));
     }
 
-    public function berita()
+    public function showBerita($id)
     {
-        return view('ukm.berita');
+        $ukm = Ukm::find($id);
+        $berita = Berita::find($id);
+        return view('SIKM.berita', compact('berita', 'ukm'));
     }
 }

@@ -80,9 +80,12 @@ class DashboardAdminController extends Controller
             return redirect('/dashboard')->with('error', 'UKM tidak ditemukan.');
         }
     
-        // Hapus UKM
+        // Hapus terlebih dahulu semua beritas yang terkait dengan UKM ini
+        $ukm->beritas()->delete();
+    
+        // Setelah semua beritas terhapus, hapus UKM
         $ukm->delete();
     
-        return redirect('/dashboard')->with('success', 'UKM berhasil dihapus.');
-    }
+        return redirect('/dashboard')->with('success', 'UKM berhasil dihapus beserta seluruh beritasnya.');
+    }    
 }

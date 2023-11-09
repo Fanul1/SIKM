@@ -10,14 +10,14 @@
                         UKM</label>
                     <input type="text" name="name" id="name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Ketik nama UKM" {{-- required="" --}}>
+                        placeholder="Ketik nama UKM" required>
                 </div>
                 <div class="sm:col-span-2">
                     <label for="email"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                     <input type="email" name="email" id="email"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Masukkan Alamat Email" {{-- required="" --}}>
+                        placeholder="Masukkan Alamat Email" required=>
                 </div>
                 <div>
                     <label for="category"
@@ -28,6 +28,7 @@
                         <option value="AG">Keagamaan</option>
                         <option value="OL">Olahraga</option>
                         <option value="AK">Akademik</option>
+                        <option value="KE">Kesenian</option>
                     </select>
                 </div>
                 <div>
@@ -35,7 +36,7 @@
                         Telpon/WA (+62)</label>
                     <input type="number" name="phone_number" id="phone_number"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Nomor" {{-- required="" --}}>
+                        placeholder="Nomor" required>
                 </div>
                 <div class="sm:col-span-2">
                     <label for="alamat"

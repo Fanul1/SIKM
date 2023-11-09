@@ -20,6 +20,7 @@
                     <option value="AG">Keagamaan</option>
                     <option value="OL">Olahraga</option>
                     <option value="AK">Akademik</option>
+                    <option value="KE">Kesenian</option>
                 </select>
             </div>
             <div class="mt-4">
@@ -31,7 +32,7 @@
                 <input type="file" name="gambar" id="gambar" class="block w-full mt-1 text-gray-900 border-gray-300 shadow-sm dark:text-white">
             </div>
             <div class="mt-4">
-                <label for="tanggal" class="block text-sm font-medium text-gray-900 dark:text-white">Tanggal</label>
+                <label for="tanggal" class="block text-sm font-medium text-gray-900 dark:text-white">Tanggal Posting</label>
                 <input type="date" name="tanggal" id="tanggal" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white">
             </div>
             <div class="mt-6">
@@ -85,7 +86,7 @@
                             <a href="{{ route('berita.detail', ['id' => $berita->id]) }}">Detail</a>
                         </button>
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="flex justify-between px-6 py-4">
                         <button type="button" class="px-3 py-2 font-medium text-white bg-yellow-800 rounded-md dark:text-yellow-500 hover:underline">
                             <a href="{{ route('berita.edit', ['id' => $berita->id]) }}">Edit</a>
                         </button>

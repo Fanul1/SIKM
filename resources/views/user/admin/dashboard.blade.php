@@ -8,6 +8,7 @@
     <title>Dashboard | ADMIN</title>
     <!-- Tambahkan link ke Google Fonts untuk Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" />
     @vite('resources/css/app.css')
     <style>
         /* Setel font-family untuk elemen-elemen yang Anda inginkan */
@@ -24,12 +25,42 @@
 <body class="bg-gray-100">
     <nav class="flex justify-between p-4 bg-blue-900">
         <h2 class="text-3xl font-bold text-white pl-7">ADMINISTRATOR</h2>
-        @auth
-        <form method="POST" action="{{ route('logout') }}" class="mr-4">
-            @csrf
-            <button type="submit" class="text-white">Logout</button>
-        </form>
-        @endauth
+        <div class="flex items-center ml-3">
+            <div>
+                <button type="button"
+                    class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                    <span class="sr-only">Open user menu</span>
+                    <img class="w-10 h-10 bg-white rounded-full" src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : asset('feather/user.svg') }}" alt="user photo">
+                </button>
+            </div>
+            <div
+                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+                id="dropdown-user">
+                <div class="px-4 py-3" role="none">
+                    <p class="text-sm text-gray-900 dark:text-white" role="none">
+                        {{ auth()->user()->name }}
+                    </p>
+                    <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                        {{ auth()->user()->email }}
+                    </p>
+                    <a href="/" class="text-black">Beranda</a>
+                </div>
+                <ul class="py-1" role="none">
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="flex items-center px-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                                role="menuitem">
+                                <img src="feather/log-out.svg" class="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" alt="Profil Icon" aria-hidden="true">
+                                <span class="flex-1 ml-3 whitespace-nowrap">Log Out</span>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
     </nav>
     <div class="container mx-auto mt-6">
         <span class="text-2xl font-medium">Dashboard</span>
@@ -206,5 +237,9 @@
     @if(session('success'))
         alert("{{ session('success') }}");
     @endif
+    @if(session('error'))
+        alert("{{ session('error') }}");
+    @endif
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </html>

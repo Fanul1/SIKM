@@ -10,32 +10,36 @@
     <form action="{{ route('berita.update', ['id' => $berita->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <div class="form-group">
-            <label for="judul">Judul</label>
-            <input type="text" class="form-control" id="judul" name="judul" value="{{ $berita->judul }}">
+        <div class="mt-4">
+            <label for="judul" class="block text-sm font-medium text-gray-900 dark:text-white">Judul Berita</label>
+            <input type="text" name="judul" id="judul" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white" value="{{ $berita->judul }}">
         </div>
-        <div class="form-group">
-            <label for="category">Kategori</label>
-            <select class="form-control" id="category" name="category">
+        <div class="mt-4">
+            <label for="category" class="block text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
+            <select id="category" name="category" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white">
+                <option selected="">Pilih kategori</option>
                 <option value="AG" {{ $berita->category === 'AG' ? 'selected' : '' }}>Keagamaan</option>
                 <option value="OL" {{ $berita->category === 'OL' ? 'selected' : '' }}>Olahraga</option>
                 <option value="AK" {{ $berita->category === 'AK' ? 'selected' : '' }}>Akademik</option>
+                <option value="KE" {{ $berita->category === 'KE' ? 'selected' : '' }}>Kesenian</option>
             </select>
         </div>
-        <div class="form-group">
-            <label for="deskripsi">Deskripsi</label>
-            <textarea class="form-control" id="deskripsi" name="deskripsi">{{ $berita->deskripsi }}</textarea>
+        <div class="mt-4">
+            <label for="deskripsi" class="block text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
+            <textarea name="deskripsi" id="deskripsi" rows="4" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white">{{ $berita->deskripsi }}</textarea>
         </div>
-        <div class="form-group">
-            <label for="gambar">Gambar</label>
-            <input type="file" class="form-control-file" id="gambar" name="gambar">
+        <div class="mt-4">
+            <label for="gambar" class="block text-sm font-medium text-gray-900 dark:text-white">Gambar</label>
+            <input type="file" name="gambar" id="gambar" class="block w-full mt-1 text-gray-900 border-gray-300 shadow-sm dark:text-white">
             <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}" style="max-width: 300px;">
         </div>
-        <div class="form-group">
-            <label for="tanggal">Tanggal</label>
-            <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ $berita->tanggal }}">
+        <div class="mt-4">
+            <label for="tanggal" class="block text-sm font-medium text-gray-900 dark:text-white">Tanggal Posting</label>
+            <input type="date" name="tanggal" id="tanggal" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white" value="{{ $berita->tanggal }}">
         </div>
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <div class="mt-6">
+            <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Update</button>
+        </div>
     </form>
 </div>
 @endsection

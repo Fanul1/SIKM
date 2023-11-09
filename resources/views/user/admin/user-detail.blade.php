@@ -13,12 +13,12 @@
         <div class="w-full p-4 bg-white rounded-lg shadow-md sm:max-w-md">
             <div class="flex items-center justify-between">
                 <h1 class="text-2xl font-semibold">Detail Pengguna</h1>
-                <a href="javascript:history.back();" class="text-blue-600 dark:text-blue-500 hover:underline">Kembali</a>
+                <a href="/dashboard" class="text-blue-600 dark:text-blue-500 hover:underline">Kembali</a>
             </div>            
             <div class="p-4 bg-gray-100 rounded-md shadow-md">
                 <div class="grid grid-cols-2 gap-4">
                     <div class="col-span-1">
-                        <img class="w-20 h-20 mx-auto rounded-full" src="{{ asset('storage/' . $users->avatar) }}" alt="User Photo">
+                        <img class="w-20 h-20 mx-auto rounded-full" src="{{ $users->avatar ? asset('storage/' . $users->avatar) : asset('feather/user.svg') }}" alt="User Photo">
                     </div>
                     <div class="col-span-1">
                         <table class="w-full">

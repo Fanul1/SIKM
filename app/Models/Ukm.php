@@ -23,9 +23,19 @@ class Ukm extends Model
         'visi',
         'misi',
         'sejarah',
+        'name_ketua',
+        'instagram',
+        'youtube',
+        'facebook',
+        'twitter',
+        'user_id',
     ];
     public function editor()
     {
         return $this->belongsTo(User::class);
+    }
+    public function beritas()
+    {
+        return $this->hasMany(Berita::class);
     }
 }

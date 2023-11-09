@@ -18,8 +18,10 @@ use Providers\AuthServiceProvider;
 |
 */
 
-Route::get('sikm', [SikmController::class, 'home']);
-Route::get('/', [SikmController::class, 'home']);
+Route::get('sikm', [SikmController::class, 'index']);
+Route::get('/', [SikmController::class, 'index'])->name('sikm.index');
+Route::get('/ukm/{id}', [SikmController::class, 'showUkm'])->name('sikm.ukm');
+Route::get('/berita/{id}', [SikmController::class, 'showBerita'])->name('sikm.berita');
 
 Route::delete('/dashboard/{name}', [DashboardAdminController::class, 'delete']);
 
@@ -32,6 +34,7 @@ Route::get('/dashboarduser', [DashboardUserController::class, 'dashboarduser'])-
 Route::get('/editprofukm', [DashboardUserController::class, 'editprofukm']);
 
 Route::get('/editkontakukm', [DashboardUserController::class, 'editkontakukm']);
+Route::put('/updatekontakukm', [DashboardUserController::class, 'updatekontakukm'])->name('updatekontakukm');
 
 Route::get('/editberitaukm', [DashboardUserController::class, 'editberitaukm']);
 Route::post('/addberitaukm', [DashboardUserController::class, 'storeberita']);
@@ -50,9 +53,6 @@ Route::post('sikm/logout', [LoginRegController::class, 'logout'])->name('logout'
 Route::get('sikm/register', [LoginRegController::class, 'register'])->middleware('guest');
 Route::post('sikm/register', [LoginRegController::class, 'store'])->name('store');
 
-Route::get('/ukm', [SikmController::class, 'ukm']);
-Route::get('/berita', [SikmController::class, 'berita']);
-
 Route::post('/dashboarduser/update-profile', [DashboardUserController::class, 'updateProfile'])->middleware('auth');
 
 Route::post('/updateukm', [DashboardUserController::class, 'updateukm']);
@@ -64,3 +64,4 @@ Route::put('/suspendEditor/{user}', [DashboardAdminController::class, 'suspendEd
 Route::put('/unsuspendEditor/{user}', [DashboardAdminController::class, 'unsuspendEditor'])->name('unsuspendEditor');
 
 Route::delete('/hapusukm/{id}', [DashboardAdminController::class, 'hapusukm'])->name('hapusukm');
+Route::delete('/ukm/{ukm}', [DashboardUserController::class, 'destroy'])->name('ukm.destroy');
