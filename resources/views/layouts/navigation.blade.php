@@ -18,8 +18,13 @@
             <div class="flex flex-row items-center">
                 <img src={{ asset('assets/Logousk.png') }} alt="Logo" class="w-16 h-16">
                 <div class="flex flex-col justify-center ml-4 font-bold font-poppins">
+                    @if(Request::routeIs('sikm.ukm'))
+                    <p class="text-2xl">{{ $ukm->name }}</p>
+                    <p class="text-lg">Dewan Permusyarawatan Mahasiswa USK</p>
+                    @else
                     <p class="text-2xl">SIKM USK</p>
                     <p class="text-lg">Sistem Informasi Kegiatan Mahasiswa</p>
+                    @endif
                 </div>
             </div>
             <!-- Tombol Login dan Pencarian -->

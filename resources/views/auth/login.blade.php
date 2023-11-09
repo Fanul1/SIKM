@@ -43,6 +43,7 @@
                         <div class="flex items-start justify-between"> <!-- Menambahkan justify-between -->
                             <div class="flex items-center h-5">
                                 Belum daftar?<a href="/sikm/register" class="ml-2 text-blue-600 hover:underline dark:text-blue-500">Buat Akun</a>
+                                <a href="/forgot-password" class="ml-3">Forgot Password?</a>
                             </div>
                             <button type="submit" class="px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800">Login ke akun anda</button>
                         </div>

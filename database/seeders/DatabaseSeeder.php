@@ -25,11 +25,5 @@ class DatabaseSeeder extends Seeder
             'role'=>'1',
             'password'=>'admin'
         ]);
-        User::create([
-            'name'=>'fanul',
-            'email'=>'fanul@ukm.com',
-            'role'=>'0',
-            'password'=>'fanul'
-        ]);
     }
 }

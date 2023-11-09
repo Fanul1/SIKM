@@ -7,11 +7,13 @@
 @section('content')
     <div class="mt-5">
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Tambah Berita</h2>
+        <h6 class="text-gray-900 dark:text-white text-end">Semua wajib diisi</h6>
+        <hr>
         <form action="/addberitaukm" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mt-4">
                 <label for="judul" class="block text-sm font-medium text-gray-900 dark:text-white">Judul Berita</label>
-                <input type="text" name="judul" id="judul" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white">
+                <input type="text" name="judul" id="judul" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white" required>
             </div>
             <div class="mt-4">
                 <label for="category" class="block text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
@@ -25,15 +27,15 @@
             </div>
             <div class="mt-4">
                 <label for="deskripsi" class="block text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
-                <textarea name="deskripsi" id="deskripsi" rows="4" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white"></textarea>
+                <textarea name="deskripsi" id="deskripsi" rows="4" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white" required></textarea>
             </div>
             <div class="mt-4">
                 <label for="gambar" class="block text-sm font-medium text-gray-900 dark:text-white">Gambar</label>
-                <input type="file" name="gambar" id="gambar" class="block w-full mt-1 text-gray-900 border-gray-300 shadow-sm dark:text-white">
+                <input type="file" name="gambar" id="gambar" class="block w-full mt-1 text-gray-900 border-gray-300 shadow-sm dark:text-white" required>
             </div>
             <div class="mt-4">
                 <label for="tanggal" class="block text-sm font-medium text-gray-900 dark:text-white">Tanggal Posting</label>
-                <input type="date" name="tanggal" id="tanggal" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white">
+                <input type="date" name="tanggal" id="tanggal" class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark:text-white" required>
             </div>
             <div class="mt-6">
                 <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Tambah</button>

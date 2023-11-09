@@ -203,6 +203,7 @@ class DashboardUserController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string',
+            'akronim' => 'required|string',
             'email' => 'required|email',
             'category' => 'required|string',
             'phone_number' => 'required|string',
@@ -226,6 +227,7 @@ class DashboardUserController extends Controller
         // Validasi data input
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'akronim' => 'required|string|max:255',
             'email' => 'required|string|email',
             'category' => 'required', // Tambahkan validasi sesuai kebutuhan
             'phone_number' => 'required|string',
@@ -244,6 +246,7 @@ class DashboardUserController extends Controller
         // Update data UKM
         $ukm->update([
             'name' => $data['name'],
+            'akronim' => $data['akronim'],
             'email' => $data['email'],
             'category' => $data['category'],
             'phone_number' => $data['phone_number'],

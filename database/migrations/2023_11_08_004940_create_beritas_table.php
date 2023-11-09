@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->string('gambar')->nullable();
             $table->date('tanggal');
+            $table->string('status')->default('Belum Dipublish')->nullable();
             $table->timestamps();
 
             $table->foreign('ukm_id')->references('id')->on('ukms');

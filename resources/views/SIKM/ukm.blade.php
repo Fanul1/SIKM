@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,10 @@
                 <img src={{ $ukm->ukm_logo ? asset('storage/' . $ukm->ukm_logo) : asset('feather/image.svg') }} alt="Logo" class="object-contain" style="width: 100px">
             </div>
         </div>        
-    </nav>
+    </nav> --}}
+@extends('layouts.navigation')
+@section('title', $ukm->name)
+@section('content')
     <!-- Content -->
     <div style="background-color: #D9D9D9;" class="flex flex-col items-center w-full py-6 overflow-hidden">
         <!-- Profil -->
@@ -112,7 +115,8 @@
         </div>
         @endif
     </div>
-    <!-- Footer -->
+@endsection
+    {{-- <!-- Footer -->
     <footer class="p-4 text-white" style="background-color: #401111;">
         <div class="container flex flex-col items-center justify-between mx-auto md:flex-row">
             <div class="flex flex-row items-center">
@@ -176,4 +180,4 @@
         </div>
     </footer>
 </body>
-</html>
+</html> --}}

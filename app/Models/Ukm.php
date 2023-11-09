@@ -15,6 +15,7 @@ class Ukm extends Model
      */
     protected $fillable = [
         'name',
+        'akronim',
         'email',
         'alamat',
         'category',

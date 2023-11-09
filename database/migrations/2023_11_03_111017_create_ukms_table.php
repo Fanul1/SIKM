@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');    
             $table->string('name')->nullable(false);
+            $table->string('akronim')->nullable(false);
             $table->string('email')->nullable();
             $table->string('category')->nullable(); // Ini adalah kolom kategori
             $table->string('phone_number')->nullable();
@@ -31,6 +32,7 @@ return new class extends Migration
             $table->string('youtube')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
+            $table->string('status')->default('Belum Dipublish')->nullable();
             $table->timestamps();
         });
     }
