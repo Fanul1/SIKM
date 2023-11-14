@@ -28,7 +28,7 @@
                     <form class="mt-8 space-y-6" method="POST" action="{{ route('login') }}">
                         @csrf
                         <div>
-                            <h3 class="font-semibold text-center text-red-600 fon">
+                            <h3 class="font-semibold text-center text-red-600">
                                 {{ session('loginError') }}
                             </h3>
                         </div>                        
@@ -40,15 +40,18 @@
                             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kata Sandi</label>
                             <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                         </div>
-                        <div class="flex items-start justify-between"> <!-- Menambahkan justify-between -->
+                        <div class="flex items-start justify-between mb-2">
                             <div class="flex items-center h-5">
                                 Belum daftar?<a href="/sikm/register" class="ml-2 text-blue-600 hover:underline dark:text-blue-500">Buat Akun</a>
-                                <a href="/forgot-password" class="ml-3">Forgot Password?</a>
                             </div>
-                            <button type="submit" class="px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800">Login ke akun anda</button>
+                            <a href="/forgot-password" class="text-blue-600 hover:underline dark:text-blue-500">Lupa Password?</a>
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <button type="submit" class="px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login ke akun anda</button>
                         </div>
                     </form>
                 </div>
+                
             </div>
         </div>
     </section>

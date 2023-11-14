@@ -61,7 +61,7 @@
                             @if (auth()->user()->role === '1')
                             <a href="/dashboard" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                             @else
-                            <a href="dashboarduser" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                            <a href="/dashboarduser" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                             @endif
                         </li>
                         </ul>

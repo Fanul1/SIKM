@@ -281,4 +281,27 @@ class DashboardUserController extends Controller
         // Redirect ke halaman yang sesuai (misalnya, halaman dashboard)
         return redirect('/dashboarduser')->with('success', 'UKM berhasil dihapus');
     }
+
+    public function publishUkm($id)
+    {
+        $ukm = Ukm::find($id);
+
+        if ($ukm) {
+            $ukm->status = 'Dipublikasi';
+            $ukm->save();
+
+            return redirect()->back()->with('success', 'UKM berhasil dipublikasi.');
+        }
+
+        return redirect()->back()->with('error', 'UKM tidak ditemukan.');
+    }
+
+    public function withdrawUkm($id)
+    {
+        $ukm = Ukm::find($id);
+        $ukm->status = 'Belum Dipublish';
+        $ukm->save();
+
+        return redirect()->back()->with('success', 'UKM berhasil ditarik.');
+    }
 }

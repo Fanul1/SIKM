@@ -27,7 +27,7 @@ Atur konfigurasi databasenya di dalam file .env, sebelum itu jalankan dibawah in
 ## Menjalankan Website SIKM
  Akun Admin
  
-    email = admin@gmail.com
+    email = admin@ukm.com
     password = admin
  
  Jalankan perintah berikut untuk mengakses keynya

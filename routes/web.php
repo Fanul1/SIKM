@@ -115,3 +115,6 @@ Route::post('/reset-password', function (Request $request) {
                 ? redirect()->route('login')->with('status', __($status))
                 : back()->withErrors(['email' => [__($status)]]);
 })->middleware('guest')->name('password.update');
+
+Route::post('/publish-ukm/{id}', [DashboardUserController::class, 'publishUkm'])->name('publish-ukm');
+Route::post('/withdraw-ukm/{id}', [DashboardUserController::class, 'withdrawUkm'])->name('withdraw-ukm');
