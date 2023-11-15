@@ -26,7 +26,9 @@
                         <div class="col-span-2 -mx-2 bg-white rounded-lg shadow-lg" style="height: 156px;">
                             <div class="flex items-center justify-center h-full">
                                 @foreach ($ukm->beritas as $berita)
+                                @if ($berita->status === 'Dipublikasi' )
                                 <img src="{{ $berita->gambar ? asset('storage/' . $berita->gambar) : asset('feather/image.svg') }}" alt="News" class="object-cover w-full h-full zoom-on-hover">
+                                @endif
                                 @endforeach
                             </div>
                         </div>

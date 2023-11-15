@@ -26,7 +26,9 @@ class SikmController extends Controller
     public function showBerita($id)
     {
         $ukm = Ukm::find($id);
-        $berita = Berita::find($id);
+        $berita = Berita::where('ukm_id', $ukm->id)
+                    ->where('status', '=', 'Dipublikasi')
+                    ->first();
         return view('SIKM.berita', compact('berita', 'ukm'));
     }
 }

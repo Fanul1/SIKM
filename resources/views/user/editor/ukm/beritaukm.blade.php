@@ -48,35 +48,24 @@
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3">
-                        No
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Judul Berita
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Tanggal Upload
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Kategori
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Detail
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Action
-                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">No</th>
+                    <th scope="col" class="px-6 py-3 text-center">Judul Berita</th>
+                    <th scope="col" class="px-10 py-3 text-center">Tanggal Upload</th>
+                    <th scope="col" class="px-6 py-3 text-center">Kategori</th>
+                    <th scope="col" class="px-6 py-3 text-center">Status</th>
+                    <th scope="col" class="px-6 py-3 text-center">Detail</th>
+                    <th scope="col" class="px-6 py-3 text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($beritas as $berita)
-                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="text-center bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $loop->iteration }}
-                    </th>
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    </td>
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $berita->judul }}
-                    </th>
+                    </td>
                     <td class="px-6 py-4">
                         {{ $berita->tanggal }}
                     </td>
@@ -84,18 +73,27 @@
                         {{ $berita->category }}
                     </td>
                     <td class="px-6 py-4">
+                        {{ $berita->status }}
+                    </td>
+                    <td class="px-6 py-4">
                         <button type="button" class="px-3 py-2 font-medium text-white bg-green-800 rounded-md dark:text-blue-500 hover:underline">
                             <a href="{{ route('berita.detail', ['id' => $berita->id]) }}">Detail</a>
                         </button>
                     </td>
-                    <td class="flex justify-between px-6 py-4">
-                        <button type="button" class="px-3 py-2 font-medium text-white bg-yellow-800 rounded-md dark:text-yellow-500 hover:underline">
+                    <td class="flex items-center px-6 py-4">
+                        <button type="button" class="px-3 py-2 ml-2 font-medium text-white bg-yellow-800 rounded-md dark:text-yellow-500 hover:underline">
                             <a href="{{ route('berita.edit', ['id' => $berita->id]) }}">Edit</a>
                         </button>
-                        <form action="{{ route('berita.delete', ['id' => $berita->id]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
+                        <form action="{{ route('berita.delete', ['id' => $berita->id]) }}" method="POST" class="ml-2">
+                            @csrf
+                            @method('DELETE')
                             <button type="submit" class="px-3 py-2 font-medium text-white bg-red-800 rounded-md dark:text-red-500 hover:underline">Hapus</button>
+                        </form>
+                        <form action="{{ route('berita.toggle-status', ['id' => $berita->id]) }}" method="POST" class="ml-2">
+                            @csrf
+                            <button type="submit" class="px-3 py-2 font-medium text-white bg-blue-800 rounded-md dark:text-blue-500 hover:underline">
+                                {{ $berita->status === 'Pending' || $berita->status === 'Belum Dipublish' ? 'Posting' : 'Tarik' }}
+                            </button>
                         </form>
                     </td>
                 </tr>

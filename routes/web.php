@@ -118,3 +118,7 @@ Route::post('/reset-password', function (Request $request) {
 
 Route::post('/publish-ukm/{id}', [DashboardUserController::class, 'publishUkm'])->name('publish-ukm');
 Route::post('/withdraw-ukm/{id}', [DashboardUserController::class, 'withdrawUkm'])->name('withdraw-ukm');
+
+Route::post('/berita/toggle-status/{id}', [DashboardUserController::class, 'toggleStatus'])->name('berita.toggle-status');
+
+Route::get('/search', [DashboardUserController::class, 'search']);

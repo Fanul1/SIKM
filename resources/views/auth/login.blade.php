@@ -14,7 +14,7 @@
             <div class="flex flex-col justify-center">
                 <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">SIKM</h1>
                 <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Disini kami mengintegrasikan semua ukm yang ada di USK</p>
-                <a href="#" class="inline-flex items-center text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline">Baca panduan penggunaan
+                <a href="https://docs.google.com/document/d/1006Pj_2UKdNH87FDE0WP2i8X1LeAibX7LrZbgXQjVyg/edit" class="inline-flex items-center text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline">Baca panduan penggunaan
                     <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                     </svg>

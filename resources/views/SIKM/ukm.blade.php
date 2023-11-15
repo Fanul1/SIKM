@@ -89,7 +89,7 @@
                 @endforeach
             </div>
         </div>
-        @if ($ukm->beritas()->count() > 0)
+        @if ($ukm->beritas()->count() > 0 )
         <div class="grid w-full gap-4 p-8 mt-16 lg:p-24" style="max-width: 88rem;">
             <h2 class="mb-4 text-xl font-bold text-center">BERITA</h2>
             {{-- <a href="/berita" class="block mb-16 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:mb-0">
@@ -99,6 +99,7 @@
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
                 </div>
             </a> --}}
+            @if ($berita)
             <div class="grid gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 justify-items-center ">
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md md:max-w-md dark:bg-gray-800 dark:border-gray-700">
                     <a href="{{ route('sikm.berita', ['id' => $berita->id]) }}">
@@ -112,6 +113,9 @@
                     </div>
                 </div>
             </div>
+            @else
+                <p>Belum ada berita</p>
+            @endif
         </div>
         @endif
     </div>

@@ -178,17 +178,21 @@
                     <th class="px-4 py-2 text-center border">No</th>
                     <th class="px-4 py-2 text-center border">Nama UKM</th>
                     <th class="px-4 py-2 text-center border">Kontak UKM</th>
+                    <th class="px-4 py-2 text-center border">Status UKM</th>
                     <th class="px-4 py-2 text-center border">Nama Editor</th>
                     <th class="px-4 py-2 text-center border">Detail</th>
                     <th class="px-4 py-2 text-center border">Aksi</th>
                 </tr>
             </thead>
             <tbody>
+                @php
+                $counts = 1;
+                @endphp
                 @foreach ($users as $user)
                 <tr class="bg-stone-100">
                     <td class="px-4 py-2 text-center border">
                         @if ($user->ukm)
-                            {{ $loop->iteration }}
+                            {{ $counts++ }}
                         @endif
                     </td>
                     <td class="px-4 py-2 text-center border">
@@ -199,6 +203,11 @@
                     <td class="px-4 py-2 text-center border">
                         @if ($user->ukm)
                             {{ $user->ukm->phone_number }}
+                        @endif
+                    </td>
+                    <td class="px-4 py-2 text-center border">
+                        @if ($user->ukm)
+                            {{ $user->ukm->status }}
                         @endif
                     </td>
                     <td class="px-4 py-2 text-center border">

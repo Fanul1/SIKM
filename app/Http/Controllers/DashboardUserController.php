@@ -16,7 +16,7 @@ class DashboardUserController extends Controller
         $user = auth()->user();
         $data = $request->validate([
             'name' => 'required|string|max:255',
-            'numberphone' => 'nullable|string',
+            'numberphone' => 'required|string',
             'email' => 'required|string|email|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:3|confirmed',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif',
@@ -301,7 +301,33 @@ class DashboardUserController extends Controller
         $ukm = Ukm::find($id);
         $ukm->status = 'Belum Dipublish';
         $ukm->save();
+        $ukm = Berita::find($id);
+        $ukm->status = 'Belum Dipublish';
+        $ukm->save();
 
         return redirect()->back()->with('success', 'UKM berhasil ditarik.');
+    }
+
+    public function toggleStatus($id)
+    {
+        $berita = Berita::find($id);
+
+        if ($berita->status === 'Pending' || $berita->status === 'Belum Dipublish') {
+            $berita->status = 'Dipublikasi';
+        } else {
+            $berita->status = 'Pending';
+        }
+
+        $berita->save();
+
+        return redirect()->back();
+    }
+
+    public function search()
+    {
+        $search_text = $_GET['query'];
+        $ukms = Ukm::where('name','LIKE', '%'.$search_text.'%')->get();
+        $beritas = Berita::where('judul','LIKE', '%'.$search_text.'%')->get();
+        return view('layouts.search', compact('ukms', 'beritas'));
     }
 }

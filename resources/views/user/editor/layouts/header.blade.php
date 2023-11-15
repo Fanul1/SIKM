@@ -27,7 +27,7 @@
                     @endif
             </div>
 
-            <!-- Search Box -->
+            {{-- <!-- Search Box -->
             <form class="absolute left-64">
                 <label for="default-search" class="mb-2 text-xs font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative">
@@ -43,7 +43,7 @@
                         placeholder="Cari Sesuatu disini" required>
                 </div>
             </form>
-            <!-- End Search Box -->
+            <!-- End Search Box --> --}}
 
             <div class="flex items-center ml-3">
                 <div>
