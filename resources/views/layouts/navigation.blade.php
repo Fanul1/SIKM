@@ -20,7 +20,7 @@
                 <div class="flex flex-col justify-center ml-4 font-bold font-poppins">
                     @if(Request::routeIs('sikm.ukm'))
                     <p class="text-2xl">{{ $ukm->name }}</p>
-                    <p class="text-lg">Dewan Permusyarawatan Mahasiswa USK</p>
+                    <p class="text-lg">{{ $ukm->akronim }}</p>
                     @else
                     <p class="text-2xl">SIKM USK</p>
                     <p class="text-lg">Sistem Informasi Kegiatan Mahasiswa</p>
@@ -86,7 +86,7 @@
     @yield('content')
 
     <!-- Footer -->
-    <footer class="p-4 text-white" style="background-color: #401111; position: fixed; left: 0; bottom: 0; width: 100%;">
+    <footer class="p-4 text-white" style="background-color: #401111;">
         <div class="container flex flex-col items-center justify-between mx-auto md:flex-row" style="margin-top: 30px; margin-bottom: 30px;">
             <div class="flex flex-row items-center">
                     <img src={{ asset('assets/Logousk.png') }} alt="Logo" class="w-16 h-16">

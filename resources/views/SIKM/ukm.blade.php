@@ -58,6 +58,16 @@
                 <p class="text-xs">{{ $ukm->alamat }}</p>
                 <p class="text-xs">📩: {{ $ukm->email }}</p>
                 <p class="text-xs">📞: {{ $ukm->phone_number }}</p>
+                <p class="text-xs">Ketua UKM : {{ $ukm->name_ketua }}</p>
+                @if ($ukm->instagram)
+                <p class="text-xs">Instagram: {{ $ukm->instagram }}</p>
+                @endif
+                @if ($ukm->twitter)
+                <p class="text-xs">📞: {{ $ukm->twitter }}</p>
+                @endif
+                @if ($ukm->youtube)
+                <p class="text-xs">📞: {{ $ukm->youtube }}</p>
+                @endif
             </div>
         </div>
         <div class="flex flex-wrap justify-center w-full gap-16 px-6 mt-16 text-justify md:mt-8 md:px-0">
