@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');    
             $table->string('name')->nullable(false);
             $table->string('email')->nullable();
-            $table->string('category')->nullable(); // Ini adalah kolom kategori
+            $table->foreignId('category_id'); //ini adalah foreign key ke tabel category
             $table->string('phone_number')->nullable();
             $table->text('alamat')->nullable();
             $table->text('tujuan')->nullable();

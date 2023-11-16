@@ -16,4 +16,8 @@ class Berita extends Model
     {
         return $this->belongsTo(Ukm::class, 'ukm_id');
     }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }
