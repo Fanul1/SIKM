@@ -31,5 +31,25 @@ class DatabaseSeeder extends Seeder
             'role'=>'0',
             'password'=>'fanul'
         ]);
+
+        Category::create([
+            'name' => 'Keagamaan',
+            'slug' => 'keagamaan',
+        ]);
+
+        Category::create([
+            'name' => 'Olahraga',
+            'slug' => 'olahraga',
+        ]);
+
+        Category::create([
+            'name' => 'Akademik',
+            'slug' => 'akademik',
+        ]);
+
+        Category::create([
+            'name' => 'Kesenian',
+            'slug' => 'kesenian',
+        ]);
     }
 }
