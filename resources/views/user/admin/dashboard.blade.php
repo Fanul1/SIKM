@@ -85,7 +85,7 @@
             <tbody>
                 @foreach ($users as $user)
                 <tr class="bg-stone-100">
-                    <td class="px-4 py-2 text-center border">{{ $loop->iteration }}</td>
+                    <td class="px-4 py-2 text-center border">{{ $users->firstItem() + $loop->iteration - 1 }}</td>
                     <td class="px-4 py-2 text-center border">{{ $user->name }}</td>
                     <td class="px-4 py-2 text-center border">{{ $user->email }}</td>
                     <td class="px-4 py-2 text-center border">
@@ -109,6 +109,28 @@
                 @endforeach
             </tbody>
         </table>
+        <!-- Pagination -->
+        <div class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6">
+            <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                <!-- Pagination Information -->
+                <div>
+                    <p class="text-sm text-gray-700">
+                        Showing
+                        <span class="font-medium">{{ $users->firstItem() }}</span>
+                        to
+                        <span class="font-medium">{{ $users->lastItem() }}</span>
+                        of
+                        <span class="font-medium">{{ $users->total() }}</span>
+                        results
+                    </p>
+                </div>
+
+                <!-- Pagination Links -->
+                <div class="flex items-center">
+                    {{ $users->links() }}
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container mx-auto mt-6">
         <p class="p-1 font-medium text-center bg-blue-500 rounded-sm">DAFTAR EDITOR</p>
@@ -168,6 +190,8 @@
                 @endforeach
             </tbody>
         </table>
+            <!-- Pagination -->
+
     </div>
     <div class="container mx-auto mt-6">
         <p class="p-1 font-medium text-center bg-blue-500 rounded-sm">DAFTAR UNIT KEGIATAN MAHASISWA</p>
@@ -189,6 +213,7 @@
                 $counts = 1;
                 @endphp
                 @foreach ($users as $user)
+                @if ($user->ukm)
                 <tr class="bg-stone-100">
                     <td class="px-4 py-2 text-center border">
                         @if ($user->ukm)
@@ -234,6 +259,7 @@
                         @endif
                     </td>
                 </tr>
+                @endif
                 @endforeach
             </tbody>
         </table>

@@ -326,8 +326,18 @@ class DashboardUserController extends Controller
     public function search()
     {
         $search_text = $_GET['query'];
-        $ukms = Ukm::where('name','LIKE', '%'.$search_text.'%')->get();
-        $beritas = Berita::where('judul','LIKE', '%'.$search_text.'%')->get();
+    
+        // For UKMs with status "Dipublikasi"
+        $ukms = Ukm::where('name', 'LIKE', '%' . $search_text . '%')
+                    ->where('status', 'Dipublikasi')
+                    ->get();
+    
+        // For Beritas with status "Dipublikasi"
+        $beritas = Berita::where('judul', 'LIKE', '%' . $search_text . '%')
+                        ->where('status', 'Dipublikasi')
+                        ->get();
+    
         return view('layouts.search', compact('ukms', 'beritas'));
     }
+    
 }
