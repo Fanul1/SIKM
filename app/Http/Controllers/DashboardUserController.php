@@ -49,7 +49,24 @@ class DashboardUserController extends Controller
     public function dashboarduser () {
         if (auth()->user()->role !== '1') {
             $user = auth()->user();
-            $ukm = $user->ukm;
+            $ukm = [
+                'id' => 0,
+                'name' => 'test',
+                'email'=> '1',
+                'alamat'=> '1',
+                'category'=> '1',
+                'phone_number'=> '1',
+                'tujuan'=> '1',
+                'visi'=> '1',
+                'misi'=> '1',
+                'sejarah'=> '1',
+                'name_ketua'=> '1',
+                'instagram'=> '1',
+                'youtube'=> '1',
+                'facebook'=> '1',
+                'twitter'=> '1',
+                'user_id'=> 1,
+            ];
             return view('user.editor.dashboard', compact('ukm'));
         } else{
             abort(403);

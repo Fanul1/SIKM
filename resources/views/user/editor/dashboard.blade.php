@@ -17,7 +17,7 @@
             <span class="pl-2">Hapus UKM</span>
         </button>
         <div id="delete-ukm" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <form action="{{ route('ukm.destroy', ['ukm' => $ukm->id]) }}" method="POST">
+            <form action="" method="POST">
                 @csrf
                 @method('DELETE')
                 <div class="relative w-full max-w-md max-h-full">
