@@ -16,7 +16,11 @@
     <nav style="background-color: #07294D;" class="p-4 text-white">
         <div class="container flex flex-row items-center justify-between mx-auto">
             <div class="flex flex-row items-center">
+                @if(Request::routeIs('sikm.ukm'))
+                    <img src={{ $ukm->ukm_logo ? asset('storage/' . $ukm->ukm_logo) : asset('assets/Logousk.png') }} alt="Logo" class="w-16 h-16">
+                @else
                 <img src={{ asset('assets/Logousk.png') }} alt="Logo" class="w-16 h-16">
+                @endif
                 <div class="flex flex-col justify-center ml-4 font-bold font-poppins">
                     @if(Request::routeIs('sikm.ukm'))
                     <p class="text-2xl">{{ $ukm->name }}</p>

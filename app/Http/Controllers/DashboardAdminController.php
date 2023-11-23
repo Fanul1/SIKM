@@ -24,7 +24,7 @@ class DashboardAdminController extends Controller
     public function dashadmin()
     {
         $this->authorize('admin');
-        $users = User::whereIn('role', ['0', '2', '3'])->with('ukm')->paginate(5);  // Mengambil editor dengan data UKM
+        $users = User::whereIn('role', ['0', '2', '3'])->with('ukm')->get();  // Mengambil editor dengan data UKM
         return view('user.admin.dashboard', compact('users'));
     }
 

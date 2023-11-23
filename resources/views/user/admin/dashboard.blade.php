@@ -19,6 +19,10 @@
         button {
             font-family: 'Poppins', sans-serif;
         }
+        .scrollable-table {
+        max-height: 300px; /* Sesuaikan dengan tinggi maksimum yang diinginkan */
+        overflow-y: auto;
+        }
     </style>
 </head>
 
@@ -71,198 +75,180 @@
     </div>
     <div class="container mx-auto mt-6">
         <p class="p-1 font-medium text-center bg-blue-500 rounded-sm">DAFTAR USER</p>
-        <table
-            class="w-full bg-white border border-gray-300 rounded shadow-md table-auto caption-top hover:caption-bottom">
-            <thead>
-                <tr style="color: white" class="bg-black">
-                    <th class="px-4 py-2 text-center border">No</th>
-                    <th class="px-4 py-2 text-center border">Nama</th>
-                    <th class="px-4 py-2 text-center border">Email</th>
-                    <th class="px-4 py-2 text-center border">Detail</th>
-                    <th class="px-4 py-2 text-center border">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $user)
-                <tr class="bg-stone-100">
-                    <td class="px-4 py-2 text-center border">{{ $users->firstItem() + $loop->iteration - 1 }}</td>
-                    <td class="px-4 py-2 text-center border">{{ $user->name }}</td>
-                    <td class="px-4 py-2 text-center border">{{ $user->email }}</td>
-                    <td class="px-4 py-2 text-center border">
-                        <a href="{{url ("/dashboard/$user->name")}}" class="px-4 py-2 text-white bg-green-600 rounded-xl">Detail</a>
-                    </td>
-                    <td class="px-4 py-2 text-center border">
-                        <div class="flex justify-center">
-                            @if ($user->role === '0')
-                            <form method="POST" action="{{ url("/dashboard/$user->name/valid") }}">
-                                @csrf @method('PUT')
-                                <button class="px-4 py-2 mr-2 font-bold text-white bg-blue-900 rounded hover:bg-blue-700">Validasi</button>
-                            </form>
-                            @endif
-                            <form action="{{ url('/dashboard/' . $user->name) }}" method="POST">
-                                @csrf @method('DELETE')
-                                <button class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Hapus</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <!-- Pagination -->
-        <div class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6">
-            <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-                <!-- Pagination Information -->
-                <div>
-                    <p class="text-sm text-gray-700">
-                        Showing
-                        <span class="font-medium">{{ $users->firstItem() }}</span>
-                        to
-                        <span class="font-medium">{{ $users->lastItem() }}</span>
-                        of
-                        <span class="font-medium">{{ $users->total() }}</span>
-                        results
-                    </p>
-                </div>
-
-                <!-- Pagination Links -->
-                <div class="flex items-center">
-                    {{ $users->links() }}
-                </div>
-            </div>
+        <div class="scrollable-table">
+            <table
+                class="w-full bg-white border border-gray-300 rounded shadow-md table-auto caption-top hover:caption-bottom">
+                <thead>
+                    <tr style="color: white" class="bg-black">
+                        <th class="px-4 py-2 text-center border">No</th>
+                        <th class="px-4 py-2 text-center border">Nama</th>
+                        <th class="px-4 py-2 text-center border">Email</th>
+                        <th class="px-4 py-2 text-center border">Detail</th>
+                        <th class="px-4 py-2 text-center border">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($users as $user)
+                    <tr class="bg-stone-100">
+                        <td class="px-4 py-2 text-center border">{{ $loop->iteration }}</td>
+                        <td class="px-4 py-2 text-center border">{{ $user->name }}</td>
+                        <td class="px-4 py-2 text-center border">{{ $user->email }}</td>
+                        <td class="px-4 py-2 text-center border">
+                            <a href="{{url ("/dashboard/$user->name")}}" class="px-4 py-2 text-white bg-green-600 rounded-xl">Detail</a>
+                        </td>
+                        <td class="px-4 py-2 text-center border">
+                            <div class="flex justify-center">
+                                @if ($user->role === '0')
+                                <form method="POST" action="{{ url("/dashboard/$user->name/valid") }}">
+                                    @csrf @method('PUT')
+                                    <button class="px-4 py-2 mr-2 font-bold text-white bg-blue-900 rounded hover:bg-blue-700">Validasi</button>
+                                </form>
+                                @endif
+                                <form action="{{ url('/dashboard/' . $user->name) }}" method="POST">
+                                    @csrf @method('DELETE')
+                                    <button class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Hapus</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="container mx-auto mt-6">
         <p class="p-1 font-medium text-center bg-blue-500 rounded-sm">DAFTAR EDITOR</p>
-        <table
-            class="w-full bg-white border border-gray-300 rounded shadow-md table-auto caption-top hover:caption-bottom">
-            <thead>
-                <tr style="color: white" class="bg-black">
-                    <th class="px-4 py-2 text-center border">No</th>
-                    <th class="px-4 py-2 text-center border">Nama</th>
-                    <th class="px-4 py-2 text-center border">Email</th>
-                    <th class="px-4 py-2 text-center border">UKM</th>
-                    <th class="px-4 py-2 text-center border">Role</th>
-                    <th class="px-4 py-2 text-center border">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                $count = 1;
-                @endphp
-                @foreach ($users as $user)
-                @if($user->role === '2'|| $user->role === '3')
-                <tr class="bg-stone-100">
-                    <td class="px-4 py-2 text-center border">{{ $count++}}</td>
-                    <td class="px-4 py-2 text-center border">{{ $user->name }}</td>
-                    <td class="px-4 py-2 text-center border">{{ $user->email }}</td>
-                    <td class="px-4 py-2 text-center border">
-                        @if($user->ukm)
-                            {{ $user->ukm->name }} <!-- Menampilkan nama UKM jika ada -->
-                        @else
-                            Belum memiliki UKM <!-- Menampilkan pesan jika tidak memiliki UKM -->
-                        @endif
-                    </td>
-                    <td class="px-4 py-2 text-center border">Editor</td>
-                    <td class="px-4 py-2 text-center border">
-                        <form action="{{ route('deleteEditor', $user->id) }}" method="POST" class="inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Hapus</button>
-                        </form>
-                        @if ($user->role === '2')
-                        <form action="{{ route('suspendEditor', $user->id) }}" method="POST" class="inline-block">
-                            @csrf
-                            @method('PUT')
-                            <button type="submit" class="px-4 py-2 ml-3 font-bold text-white bg-yellow-500 rounded hover:bg-yellow-700">Cabut Izin</button>
-                        </form>
-                        @endif
-                        @if($user->role === '3')
-                        <form action="{{ route('unsuspendEditor', $user->id) }}" method="POST" class="inline-block">
-                            @csrf
-                            @method('PUT')
-                            <button type="submit" class="px-4 py-2 font-bold text-white bg-green-500 rounded hover.bg-green-700 ml-3">Bebaskan</button>
-                        </form> 
-                        @endif                   
-                    </td>
-                </tr>
-                @endif
-                @endforeach
-            </tbody>
-        </table>
-            <!-- Pagination -->
-
+        <div class="scrollable-table">
+            <table
+                class="w-full bg-white border border-gray-300 rounded shadow-md table-auto caption-top hover:caption-bottom">
+                <thead>
+                    <tr style="color: white" class="bg-black">
+                        <th class="px-4 py-2 text-center border">No</th>
+                        <th class="px-4 py-2 text-center border">Nama</th>
+                        <th class="px-4 py-2 text-center border">Email</th>
+                        <th class="px-4 py-2 text-center border">UKM</th>
+                        <th class="px-4 py-2 text-center border">Role</th>
+                        <th class="px-4 py-2 text-center border">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                    $count = 1;
+                    @endphp
+                    @foreach ($users as $user)
+                    @if($user->role === '2'|| $user->role === '3')
+                    <tr class="bg-stone-100">
+                        <td class="px-4 py-2 text-center border">{{ $count++}}</td>
+                        <td class="px-4 py-2 text-center border">{{ $user->name }}</td>
+                        <td class="px-4 py-2 text-center border">{{ $user->email }}</td>
+                        <td class="px-4 py-2 text-center border">
+                            @if($user->ukm)
+                                {{ $user->ukm->name }} <!-- Menampilkan nama UKM jika ada -->
+                            @else
+                                Belum memiliki UKM <!-- Menampilkan pesan jika tidak memiliki UKM -->
+                            @endif
+                        </td>
+                        <td class="px-4 py-2 text-center border">Editor</td>
+                        <td class="px-4 py-2 text-center border">
+                            <form action="{{ route('deleteEditor', $user->id) }}" method="POST" class="inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Hapus</button>
+                            </form>
+                            @if ($user->role === '2')
+                            <form action="{{ route('suspendEditor', $user->id) }}" method="POST" class="inline-block">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="px-4 py-2 ml-3 font-bold text-white bg-yellow-500 rounded hover:bg-yellow-700">Cabut Izin</button>
+                            </form>
+                            @endif
+                            @if($user->role === '3')
+                            <form action="{{ route('unsuspendEditor', $user->id) }}" method="POST" class="inline-block">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="px-4 py-2 font-bold text-white bg-green-500 rounded hover.bg-green-700 ml-3">Bebaskan</button>
+                            </form> 
+                            @endif                   
+                        </td>
+                    </tr>
+                    @endif
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="container mx-auto mt-6">
         <p class="p-1 font-medium text-center bg-blue-500 rounded-sm">DAFTAR UNIT KEGIATAN MAHASISWA</p>
-        <table
-            class="w-full bg-white border border-gray-300 rounded shadow-md table-auto caption-top hover:caption-bottom">
-            <thead>
-                <tr style="color: white" class="bg-black">
-                    <th class="px-4 py-2 text-center border">No</th>
-                    <th class="px-4 py-2 text-center border">Nama UKM</th>
-                    <th class="px-4 py-2 text-center border">Kontak UKM</th>
-                    <th class="px-4 py-2 text-center border">Status UKM</th>
-                    <th class="px-4 py-2 text-center border">Nama Editor</th>
-                    <th class="px-4 py-2 text-center border">Detail</th>
-                    <th class="px-4 py-2 text-center border">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                $counts = 1;
-                @endphp
-                @foreach ($users as $user)
-                @if ($user->ukm)
-                <tr class="bg-stone-100">
-                    <td class="px-4 py-2 text-center border">
-                        @if ($user->ukm)
-                            {{ $counts++ }}
-                        @endif
-                    </td>
-                    <td class="px-4 py-2 text-center border">
-                        @if ($user->ukm)
-                            {{ $user->ukm->name }}
-                        @endif
-                    </td>
-                    <td class="px-4 py-2 text-center border">
-                        @if ($user->ukm)
-                            {{ $user->ukm->phone_number }}
-                        @endif
-                    </td>
-                    <td class="px-4 py-2 text-center border">
-                        @if ($user->ukm)
-                            {{ $user->ukm->status }}
-                        @endif
-                    </td>
-                    <td class="px-4 py-2 text-center border">
-                        @if ($user->ukm)
-                            {{ $user->name }}
-                        @endif
-                    </td>
-                    <td class="px-4 py-2 text-center border">
-                        @if ($user->ukm)
-                            <button type="button" class="px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-700">
-                                <a href="{{ route('sikm.ukm', ['id' => $user->ukm->id]) }}">Detail</a>
-                            </button>
-                        @endif
-                    </td>
-                    <td class="px-4 py-2 text-center border">
-                        @if ($user->ukm)
-                            <form action="{{ route('hapusukm', ['id' => $user->ukm->id]) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">
-                                    Hapus
+        <div class="scrollable-table">
+            <table
+                class="w-full bg-white border border-gray-300 rounded shadow-md table-auto caption-top hover:caption-bottom">
+                <thead>
+                    <tr style="color: white" class="bg-black">
+                        <th class="px-4 py-2 text-center border">No</th>
+                        <th class="px-4 py-2 text-center border">Nama UKM</th>
+                        <th class="px-4 py-2 text-center border">Kontak UKM</th>
+                        <th class="px-4 py-2 text-center border">Status UKM</th>
+                        <th class="px-4 py-2 text-center border">Nama Editor</th>
+                        <th class="px-4 py-2 text-center border">Detail</th>
+                        <th class="px-4 py-2 text-center border">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                    $counts = 1;
+                    @endphp
+                    @foreach ($users as $user)
+                    @if ($user->ukm)
+                    <tr class="bg-stone-100">
+                        <td class="px-4 py-2 text-center border">
+                            @if ($user->ukm)
+                                {{ $counts++ }}
+                            @endif
+                        </td>
+                        <td class="px-4 py-2 text-center border">
+                            @if ($user->ukm)
+                                {{ $user->ukm->name }}
+                            @endif
+                        </td>
+                        <td class="px-4 py-2 text-center border">
+                            @if ($user->ukm)
+                                {{ $user->ukm->phone_number }}
+                            @endif
+                        </td>
+                        <td class="px-4 py-2 text-center border">
+                            @if ($user->ukm)
+                                {{ $user->ukm->status }}
+                            @endif
+                        </td>
+                        <td class="px-4 py-2 text-center border">
+                            @if ($user->ukm)
+                                {{ $user->name }}
+                            @endif
+                        </td>
+                        <td class="px-4 py-2 text-center border">
+                            @if ($user->ukm)
+                                <button type="button" class="px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-700">
+                                    <a href="{{ route('sikm.ukm', ['id' => $user->ukm->id]) }}">Detail</a>
                                 </button>
-                            </form>
-                        @endif
-                    </td>
-                </tr>
-                @endif
-                @endforeach
-            </tbody>
-        </table>
+                            @endif
+                        </td>
+                        <td class="px-4 py-2 text-center border">
+                            @if ($user->ukm)
+                                <form action="{{ route('hapusukm', ['id' => $user->ukm->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">
+                                        Hapus
+                                    </button>
+                                </form>
+                            @endif
+                        </td>
+                    </tr>
+                    @endif
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
     <footer class="text-center bg-green-200 mt-11">
         © 2023. Made By Kelompok 9
