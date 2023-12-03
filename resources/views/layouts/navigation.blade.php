@@ -9,11 +9,34 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/homepage.css')}}">
     @vite('resources/css/app.css')
+    <style>
+        nav {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Tambahkan efek blur ke latar belakang */
+        nav::before {
+            content: "";
+            background-image: inherit; /* Mengambil gambar latar belakang dari body */
+            background-size: inherit;
+            background-position: inherit;
+            background-repeat: inherit;
+            filter: blur(5px); /* Tambahkan blur ke latar belakang */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Menempatkan z-index di belakang konten */
+        }
+    </style>
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-100">
     <!-- Navbar -->
-    <nav style="background-color: #07294D;" class="p-4 text-white">
+    <nav style="{{ $ukm->ukm_gambar ? 'background-image: url('. asset('storage/' . $ukm->ukm_gambar) .');' : 'background-color: #07294D;' }}" class="p-4 text-white">
         <div class="container flex flex-row items-center justify-between mx-auto">
             <div class="flex flex-row items-center">
                 @if(Request::routeIs('sikm.ukm'))
@@ -33,19 +56,11 @@
             </div>
             <!-- Tombol Login dan Pencarian -->
             <div class="inline-flex items-center">
-                <!-- Pencarian (search) -->
-                <form method="GET" action="{{ url('/search') }}">   
-                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                            </svg>
-                        </div>
-                        <input type="search" name="query" id="default-search" class="block w-full p-2.5 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="UKM, Berita" required>
-                        <button type="submit" class="text-white absolute end-2.5 bottom-1.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-2 py-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 text-sm">Search</button>
-                    </div>
-                </form>
+                <a href="/search" class="inline-flex items-center px-3 py-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>Pencarian
+                </a>                
                 <!-- Tombol Login -->
                 @auth
                     <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">
@@ -154,4 +169,30 @@
     </footer>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Seleksi elemen-elemen HTML yang diperlukan
+        var expandBar = document.getElementById("expandBar");
+        var hiddenCards = document.getElementById("hiddenCards");
+        var expandText = document.getElementById("expandText");
+
+        // Tambahkan event listener untuk klik pada expand bar
+        expandBar.addEventListener("click", function () {
+            // Toggle kelas 'hidden' pada elemen sisanya
+            hiddenCards.classList.toggle("hidden");
+
+            // Ubah teks pada tombol expand
+            if (hiddenCards.classList.contains("hidden")) {
+                expandText.textContent = "Lihat Lebih Banyak";
+            } else {
+                expandText.textContent = "Tutup";
+            }
+        });
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 </html>

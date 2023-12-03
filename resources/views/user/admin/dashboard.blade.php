@@ -23,6 +23,11 @@
         max-height: 300px; /* Sesuaikan dengan tinggi maksimum yang diinginkan */
         overflow-y: auto;
         }
+        thead {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
     </style>
 </head>
 
@@ -79,10 +84,11 @@
             <table
                 class="w-full bg-white border border-gray-300 rounded shadow-md table-auto caption-top hover:caption-bottom">
                 <thead>
-                    <tr style="color: white" class="bg-black">
+                    <tr style="color: white;" class="bg-black">
                         <th class="px-4 py-2 text-center border">No</th>
                         <th class="px-4 py-2 text-center border">Nama</th>
                         <th class="px-4 py-2 text-center border">Email</th>
+                        <th class="px-4 py-2 text-center border">Dibuat</th>
                         <th class="px-4 py-2 text-center border">Detail</th>
                         <th class="px-4 py-2 text-center border">Aksi</th>
                     </tr>
@@ -93,6 +99,7 @@
                         <td class="px-4 py-2 text-center border">{{ $loop->iteration }}</td>
                         <td class="px-4 py-2 text-center border">{{ $user->name }}</td>
                         <td class="px-4 py-2 text-center border">{{ $user->email }}</td>
+                        <td class="px-4 py-2 text-center border">{{ $user->created_at }}</td>
                         <td class="px-4 py-2 text-center border">
                             <a href="{{url ("/dashboard/$user->name")}}" class="px-4 py-2 text-white bg-green-600 rounded-xl">Detail</a>
                         </td>
@@ -189,6 +196,7 @@
                         <th class="px-4 py-2 text-center border">Kontak UKM</th>
                         <th class="px-4 py-2 text-center border">Status UKM</th>
                         <th class="px-4 py-2 text-center border">Nama Editor</th>
+                        <th class="px-4 py-2 text-center border">Dimodifikasi</th>
                         <th class="px-4 py-2 text-center border">Detail</th>
                         <th class="px-4 py-2 text-center border">Aksi</th>
                     </tr>
@@ -223,6 +231,11 @@
                         <td class="px-4 py-2 text-center border">
                             @if ($user->ukm)
                                 {{ $user->name }}
+                            @endif
+                        </td>
+                        <td class="px-4 py-2 text-center border">
+                            @if ($user->ukm)
+                                {{ $user->ukm->updated_at }}
                             @endif
                         </td>
                         <td class="px-4 py-2 text-center border">

@@ -60,9 +60,16 @@
                     <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="ukm_logo" type="file" accept="image/*" name="ukm_logo">
                 </div>
                 <div class="relative sm:col-span-2">
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="ukm_gambar">Upload Gambar 1</label>
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="ukm_gambar">Foto Sampul</label>
                     <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="ukm_gambar" type="file" accept="image/*" name="ukm_gambar">
-                </div>                
+                
+                    <!-- Tampilkan gambar jika sudah ada -->
+                    @if ($ukm->ukm_gambar)
+                        <div class="mt-2">
+                            <img src="{{ asset('storage/' . $ukm->ukm_gambar) }}" alt="Foto Sampul" class="object-cover w-32 h-32 rounded-lg">
+                        </div>
+                    @endif
+                </div>                               
             </div>
             <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="bg-green-800 inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                 Update
@@ -114,6 +121,6 @@
             </div>
         </div>
     </div>
-  </section>
+</section>
+<button onclick="goBack()" class="fixed px-4 py-2 text-white bg-blue-500 rounded-full bottom-4 right-4">Kembali</button>
 @endsection
-    {{-- Edit Profil UKM, FOTO, VIDEO, Masukkan Sejarah, Tujuan Organisasi, Visi & MIsi --}}

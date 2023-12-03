@@ -320,21 +320,17 @@ class DashboardUserController extends Controller
 
         $berita->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'status udah diupdate');
     }
 
     public function search()
     {
-        $search_text = $_GET['query'];
-    
         // For UKMs with status "Dipublikasi"
-        $ukms = Ukm::where('name', 'LIKE', '%' . $search_text . '%')
-                    ->where('status', 'Dipublikasi')
+        $ukms = Ukm::where('status', 'Dipublikasi')
                     ->get();
     
         // For Beritas with status "Dipublikasi"
-        $beritas = Berita::where('judul', 'LIKE', '%' . $search_text . '%')
-                        ->where('status', 'Dipublikasi')
+        $beritas = Berita::where('status', 'Dipublikasi')
                         ->get();
     
         return view('layouts.search', compact('ukms', 'beritas'));

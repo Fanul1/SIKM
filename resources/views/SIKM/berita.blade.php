@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-
+        <button onclick="goBack()" class="fixed px-4 py-2 text-white bg-blue-500 rounded-full bottom-4 right-4">Kembali</button>
     </div>
 
     <!-- Footer -->
@@ -119,5 +119,9 @@
         </div>
     </footer>
 </body>
-
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 </html>

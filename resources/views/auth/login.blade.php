@@ -21,7 +21,10 @@
                 </a>
             </div>
             <div>
-                <div class="w-full p-6 space-y-8 bg-white rounded-lg shadow-xl lg:max-w-xl sm:p-8 dark:bg-gray-800">
+                <div class="relative w-full p-6 space-y-8 bg-white rounded-lg shadow-xl lg:max-w-xl sm:p-8 dark:bg-gray-800">
+                    <a href="/" class="absolute top-0 right-0 mt-4 mr-4 text-blue-600 hover:underline dark:text-blue-500">
+                        Kembali
+                    </a>
                     <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-white">
                         Masuk ke SIKM
                     </h2>

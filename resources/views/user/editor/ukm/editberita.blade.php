@@ -42,4 +42,6 @@
         </div>
     </form>
 </div>
+<button onclick="goBack()" class="fixed px-4 py-2 text-white bg-blue-500 rounded-full bottom-4 right-4">Kembali</button>
+
 @endsection
