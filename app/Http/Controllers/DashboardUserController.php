@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Gate;
-use App\Models\Berita;
 use App\Models\Ukm;
+use App\Models\Berita;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardUserController extends Controller
 {
@@ -135,33 +137,56 @@ class DashboardUserController extends Controller
             'category' => 'required|string',
             'deskripsi' => 'required|string',
             'tanggal' => 'required|date',
+            'gambar.*' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
-
+    
         $berita = Berita::find($id);
-
+    
         if (!$berita) {
             return redirect()->back()->with('error', 'Berita not found');
         }
-
+    
         // Update the fields from the request
         $berita->judul = $request->input('judul');
         $berita->category = $request->input('category');
         $berita->deskripsi = $request->input('deskripsi');
         $berita->tanggal = $request->input('tanggal');
-
-        // If a new image file is uploaded, update the image
+    
+        // If new images are uploaded, update the images
         if ($request->hasFile('gambar')) {
             $this->validate($request, [
-                'gambar' => 'image|mimes:jpeg,png,jpg,gif',
+                'gambar.*' => 'image|mimes:jpeg,png,jpg,gif',
             ]);
-            $gambarPath = $request->file('gambar')->store('ukm_berita', 'public');
-            $berita->gambar = $gambarPath;
+    
+            // Delete existing images
+            if (!is_null($berita->gambar)) {
+                $existingImages = json_decode($berita->gambar, true);
+
+                // Check if decoding was successful and it's an array
+                if (is_array($existingImages)) {
+                    foreach ($existingImages as $existingImage) {
+                        Storage::disk('public')->delete($existingImage);
+                    }
+                } else {
+                    // If not an array, assume it's a single image and delete it
+                    Storage::disk('public')->delete($berita->gambar);
+                }
+            }
+    
+            // Save new images
+            $gambarPaths = [];
+            foreach ($request->file('gambar') as $image) {
+                $gambarPath = $image->store('ukm_berita', 'public');
+                $gambarPaths[] = $gambarPath;
+            }
+    
+            $berita->gambar = json_encode($gambarPaths);
         }
-
+    
         $berita->save();
-
+    
         return redirect()->route('berita.detail', ['id' => $berita->id])->with('success', 'Berita updated successfully');
-    }
+    }    
 
     public function deleteBerita($id)
     {
@@ -178,24 +203,31 @@ class DashboardUserController extends Controller
             'judul' => 'required|string',
             'category' => 'required|string',
             'deskripsi' => 'required|string',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'gambar.*' => 'required|image|mimes:jpeg,png,jpg,gif',
             'tanggal' => 'required|date',
         ]);
-
+    
+        $ukmId = auth()->user()->ukm->id;
+    
+        $gambarPaths = [];
+    
         // Simpan gambar
         if ($request->hasFile('gambar')) {
-            $gambarPath = $request->file('gambar')->store('ukm_berita', 'public');
+            foreach ($request->file('gambar') as $image) {
+                $gambarPath = $image->store('ukm_berita', 'public');
+                $gambarPaths[] = $gambarPath;
+            }
         }
-
+    
         $berita = new Berita();
-        $berita->ukm_id = auth()->user()->ukm->id;
+        $berita->ukm_id = $ukmId;
         $berita->judul = $request->judul;
         $berita->category = $request->category;
         $berita->deskripsi = $request->deskripsi;
-        $berita->gambar = $gambarPath;
+        $berita->gambar = json_encode($gambarPaths); // Store paths as JSON array
         $berita->tanggal = $request->tanggal;
         $berita->save();
-
+    
         return redirect('/editberitaukm')->with('success', 'Berita berhasil ditambahkan');
     }
 

@@ -7,6 +7,7 @@
     <title>@yield('title')</title>
     <!-- Menghubungkan dengan file CSS Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="{{ asset('css/homepage.css')}}">
     @vite('resources/css/app.css')
     <style>
@@ -49,8 +50,10 @@
                     <p class="text-2xl">{{ $ukm->name }}</p>
                     <p class="text-lg">{{ $ukm->akronim }}</p>
                     @else
-                    <p class="text-2xl">SIKM USK</p>
-                    <p class="text-lg">Sistem Informasi Kegiatan Mahasiswa</p>
+                    <a href="/">
+                        <p class="text-2xl">SIKM USK</p>
+                        <p class="text-lg">Sistem Informasi Kegiatan Mahasiswa</p>
+                    </a>
                     @endif
                 </div>
             </div>
@@ -169,30 +172,8 @@
     </footer>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Seleksi elemen-elemen HTML yang diperlukan
-        var expandBar = document.getElementById("expandBar");
-        var hiddenCards = document.getElementById("hiddenCards");
-        var expandText = document.getElementById("expandText");
-
-        // Tambahkan event listener untuk klik pada expand bar
-        expandBar.addEventListener("click", function () {
-            // Toggle kelas 'hidden' pada elemen sisanya
-            hiddenCards.classList.toggle("hidden");
-
-            // Ubah teks pada tombol expand
-            if (hiddenCards.classList.contains("hidden")) {
-                expandText.textContent = "Lihat Lebih Banyak";
-            } else {
-                expandText.textContent = "Tutup";
-            }
-        });
-    });
-</script>
-<script>
-    function goBack() {
-        window.history.back();
-    }
-</script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.min.js"></script>
+<script src="{{ asset('js/homepage.js') }}"></script>
 </html>

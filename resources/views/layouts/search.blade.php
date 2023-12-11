@@ -18,35 +18,49 @@
         </div>
         
         <h3 class="mt-8 mb-4 text-2xl font-bold text-center">UKM</h3>
-        <div id="cardContainer" class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                <!-- Tampilkan UKM -->
-                @foreach ($ukms as $ukm)
-                    @if ($ukm->status === 'Dipublikasi')
-                        <div class="grid grid-cols-3 gap-4 p-4 m-4 ukm-card">
-                            <div class="col-span-1 -mx-2 bg-white rounded-lg shadow-lg" style="background-image: url('{{ $ukm->ukm_logo ? asset('storage/' . $ukm->ukm_logo) : asset('feather/image.svg') }}'); background-size: contain; background-repeat: no-repeat; background-position: center; height: 156px; width: 156px;">
-                                <div class="flex items-center justify-center h-full"></div>
+        <div id="cardContainer" class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <!-- Tampilkan UKM -->
+            @foreach ($ukms as $ukm)
+                @if ($ukm->status === 'Dipublikasi')
+                    <div class="relative flex flex-col items-center gap-2 p-4 m-4 ukm-card">
+                        <a href="{{ route('sikm.ukm', ['id' => $ukm->id]) }}">
+                            <div class="relative bg-white rounded-lg shadow-lg" style="background-image: url('{{ $ukm->ukm_logo ? asset('storage/' . $ukm->ukm_logo) : asset('feather/image.svg') }}'); background-size: contain; background-repeat: no-repeat; background-position: center; height: 210px; width: 210px;">
                             </div>
-                            <div class="col-span-2 -mx-2 bg-white rounded-lg shadow-lg" style="height: 156px;">
-                                <div class="flex items-center justify-center h-full">
-                                    @foreach ($ukm->beritas->where('status', 'Dipublikasi')->sortByDesc('created_at')->take(1) as $berita)
-                                        <img src="{{ $berita->gambar ? asset('storage/' . $berita->gambar) : asset('feather/image.svg') }}" alt="News" class="object-cover w-full h-full zoom-on-hover">
-                                    @endforeach
-                                </div>
-                            </div>
-                            <a href="{{ route('sikm.ukm', ['id' => $ukm->id]) }}" class="flex items-center justify-center col-span-3 font-bold text-center font-poppins">{{ $ukm->name }}</a>
-                        </div>
-                    @endif
-                @endforeach
+                        </a>
+                        <!-- Letakkan tag a tepat di tengah bawah gambar -->
+                        <a href="{{ route('sikm.ukm', ['id' => $ukm->id]) }}" class="flex items-center justify-center font-bold text-center font-poppins" style="height: 40px;">
+                            {{ $ukm->name }}
+                        </a>
+                    </div>
+                @endif
+            @endforeach
         </div>
 
         <h3 class="mt-8 mb-4 text-2xl font-bold text-center">Berita</h3>
-        <div id="cardContainer" class="grid grid-cols-1 gap-4 mb-10 md:grid-cols-2 lg:grid-cols-3">
+        <div id="cardContainer" class="grid grid-cols-1 gap-10 mb-10 md:grid-cols-2 lg:grid-cols-3">
             <!-- Tampilkan Berita -->
             @foreach ($beritas as $berita)
                 @if ($berita->status === 'Dipublikasi')
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md md:max-w-md dark:bg-gray-800 dark:border-gray-700 berita-card">
                         <a href="{{ route('sikm.berita', ['id' => $berita->id]) }}">
-                            <img class="object-cover rounded-t-lg" src="{{ $berita->gambar ? asset('storage/' . $berita->gambar) : asset('feather/image.svg') }}" alt="" />
+                            @if($berita->gambar)
+                                @php
+                                    $gambarArray = json_decode($berita->gambar);
+                                @endphp
+                                @if(is_array($gambarArray) && count($gambarArray) > 0)
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            @foreach ($gambarArray as $gambarPath)
+                                                <div class="swiper-slide">
+                                                    <img class="object-cover rounded-t-lg" src="{{ asset('storage/' . $gambarPath) }}" alt="" />
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @else
+                                    <img class="object-cover rounded-t-lg" src="{{ asset('storage/' . $berita->gambar) }}" alt="" />
+                                @endif
+                            @endif
                         </a>
                         <div class="p-5">
                             <a href="{{ route('sikm.berita', ['id' => $berita->id]) }}">

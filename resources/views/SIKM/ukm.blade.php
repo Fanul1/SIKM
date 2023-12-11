@@ -63,19 +63,38 @@
         <div class="grid w-full gap-4 p-8 mt-16 lg:p-24" style="max-width: 88rem;">
             <h2 class="mb-4 text-xl font-bold text-center">BERITA</h2>
             @if ($beritas->count() > 0)
-                <div class="grid gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 justify-items-center ">
+                <div class="grid grid-cols-1 gap-10 lg:grid-cols-3 md:grid-cols-2">
                     @foreach ($beritas as $berita)
-                        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md md:max-w-md dark:bg-gray-800 dark:border-gray-700">
-                            <a href="{{ route('sikm.berita', ['id' => $berita->id]) }}">
-                                <img class="object-cover rounded-t-lg" src="{{ $berita->gambar ? asset('storage/' . $berita->gambar) : asset('feather/image.svg') }}" alt="" />
-                            </a>
-                            <div class="p-5">
+                        @if ($berita->status === 'Dipublikasi')
+                            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md md:max-w-md dark:bg-gray-800 dark:border-gray-700 berita-card">
                                 <a href="{{ route('sikm.berita', ['id' => $berita->id]) }}">
-                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $berita->judul }}</h5>
+                                    @if($berita->gambar)
+                                        @php
+                                            $gambarArray = json_decode($berita->gambar);
+                                        @endphp
+                                        @if(is_array($gambarArray) && count($gambarArray) > 0)
+                                            <div class="swiper-container">
+                                                <div class="swiper-wrapper">
+                                                    @foreach ($gambarArray as $gambarPath)
+                                                        <div class="swiper-slide">
+                                                            <img class="object-cover rounded-t-lg" src="{{ asset('storage/' . $gambarPath) }}" alt="" />
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @else
+                                            <img class="object-cover rounded-t-lg" src="{{ asset('storage/' . $berita->gambar) }}" alt="" />
+                                        @endif
+                                    @endif
                                 </a>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ strtok($berita->deskripsi, '.?!') }}</p>
+                                <div class="p-5">
+                                    <a href="{{ route('sikm.berita', ['id' => $berita->id]) }}">
+                                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $berita->judul }}</h5>
+                                    </a>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ strtok($berita->deskripsi, '.?!') }}</p>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
             @else

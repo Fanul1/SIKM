@@ -7,6 +7,57 @@
     <title>{{ $berita->judul }}</title>
     <!-- Menghubungkan dengan file CSS Tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        .swiper-container {
+          width: 100%;
+          overflow: hidden;
+          position: relative;
+        }
+      
+        .swiper-wrapper {
+          display: flex;
+          transition: transform 0.3s ease-in-out;
+        }
+      
+        .swiper-slide {
+          flex: 0 0 100%;
+          box-sizing: border-box;
+        }
+
+        /* Custom styles for layout */
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        #carousel {
+            width: 48%; /* Adjust the width of the carousel as needed */
+        }
+
+        #description {
+            width: 48%; /* Adjust the width of the description as needed */
+            box-sizing: border-box;
+            padding: 20px; /* Add padding for better spacing */
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Additional styles for responsiveness */
+        @media (max-width: 768px) {
+            #carousel, #description {
+                width: 100%;
+            }
+        }
+    </style>
+      
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-100">
@@ -27,28 +78,45 @@
         </div>        
     </nav>
     <!-- Content -->
-    <div style="background-color: #D9D9D9;" class="flex flex-col items-center w-full overflow-hidden">
-        <div class="grid w-full max-w-6xl gap-4 p-8 mx-4">
-            <h2 class="mb-4 text-3xl font-bold text-center">{{ $berita->judul }}</h2>
-            <div class="mb-16 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:mb-0">
-                <img class="object-cover w-full rounded-md h-52 md:h-auto" src={{ $berita->gambar ? asset('storage/' . $berita->gambar) : asset('feather/image.svg') }} alt="">
-                <div class="flex flex-col justify-between p-4 leading-normal">
-                    <div class="flex items-center mb-6">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (23).jpg" class="h-8 mr-2 rounded-full" alt="avatar" loading="lazy" />
-                        <div>
-                          <span> Published <u>{{ $berita->tanggal }}</u> by </span>
-                          <a href="#!" class="font-medium">{{ $ukm->name }}</a>
+    <div style="background-color: #D9D9D9;" class="w-full py-10 mx-auto overflow-hidden flex-container">
+        <div id="carousel" class="w-full max-w-6xl mx-auto swiper-container">
+            <div class="swiper-wrapper">
+                @if($berita->gambar)
+                    @php
+                        $gambarArray = json_decode($berita->gambar);
+                    @endphp
+                    @if(is_array($gambarArray) && count($gambarArray) > 0)
+                        @foreach ($gambarArray as $gambarPath)
+                            <div class="swiper-slide">
+                                <img class="object-cover w-full h-full rounded-md" src="{{ asset('storage/' . $gambarPath) }}" alt="" />
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="swiper-slide">
+                            <img class="object-cover w-full h-full rounded-md" src="{{ asset('storage/' . $berita->gambar) }}" alt="" />
                         </div>
-                    </div>
-                    @foreach(explode("\n", $berita->deskripsi) as $item)
-                    <p class="mb-5 font-normal text-gray-700 dark:text-gray-400" style="text-indent: 0.5in">{{ trim($item) }}</p>
-                    @endforeach
+                    @endif
+                @endif
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <div id="description" class="w-full max-w-6xl p-4 mx-auto mb-16 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:mb-0">
+            <div class="flex items-center mb-6">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (23).jpg" class="h-8 mr-2 rounded-full" alt="avatar" loading="lazy" />
+                <div>
+                    <span> Published <u>{{ $berita->tanggal }}</u> by </span>
+                    <a href="#!" class="font-medium">{{ $ukm->name }}</a>
                 </div>
+            </div>
+            <div class="leading-normal">
+                @foreach(explode("\n", $berita->deskripsi) as $item)
+                    <p class="mb-5 font-normal text-gray-700 dark:text-gray-400" style="text-indent: 0.5in">{{ trim($item) }}</p>
+                @endforeach
             </div>
         </div>
         <button onclick="goBack()" class="fixed px-4 py-2 text-white bg-blue-500 rounded-full bottom-4 right-4">Kembali</button>
     </div>
-
     <!-- Footer -->
     <footer class="p-4 text-white" style="background-color: #401111;">
         <div class="container flex flex-col items-center justify-between mx-auto md:flex-row">
@@ -123,5 +191,15 @@
     function goBack() {
         window.history.back();
     }
+</script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var mySwiper = new Swiper('#carousel', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
 </script>
 </html>
