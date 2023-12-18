@@ -45,9 +45,9 @@
                 @csrf
                 <input type="hidden" name="token" value="{{ request()->token }}">
                 <input type="hidden" name="email" value="{{ request()->email }}">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">Kata Sandi</label>
                 <input type="password" name="password" class="form-control">
-                <label for="password_confirmation" class="form-label">Password Confirmation</label>
+                <label for="password_confirmation" class="form-label">Konfirmasi Kata Sandi</label>
                 <input type="password" class="form-control" name="password_confirmation">
                 <input type="submit" value="Update Password" class="mt-3 btn btn-primary w-100">
             </form>

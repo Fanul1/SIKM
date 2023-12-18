@@ -40,13 +40,13 @@
                 </div>
             @endif
             
-            <h2>Forgot Your Password</h2>
-            <p>please enter your mail to password reset request</p>
+            <h2>Lupa Kata Sandi</h2>
+            <p>Mohon masukkan email and untuk mereset kata sandi</p>
             <form action="{{ route('password.email')}}" method="post">
                 @csrf
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" class="form-control">
-                <input type="submit" value="Request Password Reset" class="mt-3 btn btn-primary w-100">
+                <input type="submit" value="Minta Reset Kata Sandi" class="mt-3 btn btn-primary w-100">
             </form>
         </div>
     </div>

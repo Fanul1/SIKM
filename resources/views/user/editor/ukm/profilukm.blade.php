@@ -61,7 +61,7 @@
                     <img id="avatar-preview" class="object-cover w-32 h-32 rounded-lg" src="{{ $ukm->ukm_logo ? asset('storage/' . $ukm->ukm_logo) : asset('feather/user.svg') }}" alt="user photo">
                 </div>
                 <div class="relative sm:col-span-2">
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="ukm_gambar">Foto Sampul</label>
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="ukm_gambar">Foto Sampul (Opsional)</label>
                     <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="ukm_gambar" type="file" accept="image/*" name="ukm_gambar">
                 
                     <!-- Tampilkan gambar jika sudah ada -->

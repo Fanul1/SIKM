@@ -46,20 +46,24 @@
             <div
                 class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
                 id="dropdown-user">
-                <div class="px-4 py-3" role="none">
-                    <p class="text-sm text-gray-900 dark:text-white" role="none">
-                        {{ auth()->user()->name }}
-                    </p>
-                    <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                        {{ auth()->user()->email }}
-                    </p>
-                    <a href="/" class="text-black">Beranda</a>
-                </div>
-                <ul class="py-1" role="none">
+                <ul class="p-3" role="none">
+                    <li>
+                        <p class="text-sm text-gray-900 dark:text-white" role="none">
+                            {{ auth()->user()->name }}
+                        </p>
+                    </li>
+                    <li>
+                        <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                            {{ auth()->user()->email }}
+                        </p>
+                    </li>
+                    <li>
+                        <a href="/" class="text-black">Beranda</a>
+                    </li>
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" class="flex items-center px-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                            <button type="submit" class="flex items-center px-2 pt-1 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                                 role="menuitem">
                                 <img src="feather/log-out.svg" class="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" alt="Profil Icon" aria-hidden="true">
                                 <span class="flex-1 ml-3 whitespace-nowrap">Log Out</span>

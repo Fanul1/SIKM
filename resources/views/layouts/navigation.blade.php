@@ -8,6 +8,8 @@
     <!-- Menghubungkan dengan file CSS Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- Tippy.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js/dist/tippy.css" />
     <link rel="stylesheet" href="{{ asset('css/homepage.css')}}">
     @vite('resources/css/app.css')
     <style>
@@ -37,7 +39,7 @@
 
 <body class="flex flex-col min-h-screen bg-gray-100">
     <!-- Navbar -->
-    <nav style="{{ $ukm->ukm_gambar ? 'background-image: url('. asset('storage/' . $ukm->ukm_gambar) .');' : 'background-color: #07294D;' }}" class="p-4 text-white">
+    <nav style="background-color: #07294D;" class="p-4 text-white">
         <div class="container flex flex-row items-center justify-between mx-auto">
             <div class="flex flex-row items-center">
                 @if(Request::routeIs('sikm.ukm'))
@@ -71,7 +73,7 @@
                         <img class="w-10 h-10 bg-blue-500 rounded-full" src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : asset('feather/user.svg') }}" alt="user photo">
                     </button>
                     <!-- Dropdown menu -->
-                    <div id="dropdownAvatar" class="z-10 hidden w-40 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
+                    <div id="dropdownAvatar" class="z-50 hidden w-40 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
                         <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
                         <div>{{ auth()->user()->name }}</div>
                         <div class="font-medium truncate">{{ auth()->user()->email }}</div>
@@ -176,4 +178,12 @@
 <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.min.js"></script>
 <script src="{{ asset('js/homepage.js') }}"></script>
+<script>
+    tippy('#instagramTooltip', {
+        content: `<iframe src="https://www.instagram.com/{{ $ukm->instagram }}/embed" width="300" height="300" frameborder="0"></iframe>`,
+        allowHTML: true,
+        interactive: true,
+        theme: 'light',
+    });
+</script>
 </html>

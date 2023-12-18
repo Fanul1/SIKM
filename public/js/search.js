@@ -14,17 +14,21 @@ document.addEventListener("DOMContentLoaded", function () {
     function filterCards(filterType) {
         const ukmCards = document.querySelectorAll(".ukm-card");
         const beritaCards = document.querySelectorAll(".berita-card");
-
+    
         ukmCards.forEach(card => {
             const ukmName = card.querySelector(".font-bold").textContent.toLowerCase();
             const showCard = (filterType === "all" || filterType === "ukm") && ukmName.includes(searchInput.value.toLowerCase());
-            card.style.display = showCard ? "grid" : "none";
+            card.style.visibility = showCard ? "visible" : "hidden";
+            card.style.height = showCard ? "auto" : "0";
+            card.style.width = showCard ? "auto" : "0";
         });
-
+    
         beritaCards.forEach(card => {
             const beritaJudul = card.querySelector(".font-bold").textContent.toLowerCase();
             const showCard = (filterType === "all" || filterType === "berita") && beritaJudul.includes(searchInput.value.toLowerCase());
-            card.style.display = showCard ? "grid" : "none";
+            card.style.visibility = showCard ? "visible" : "hidden";
+            card.style.height = showCard ? "auto" : "0";
+            card.style.width = showCard ? "auto" : "0";
         });
 
         updateNoResultsMessage();

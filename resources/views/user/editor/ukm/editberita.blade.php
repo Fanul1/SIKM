@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
     <h1>Edit Berita</h1>
-    <form action="{{ route('berita.update', ['id' => $berita->id]) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('berita.update', ['id' => $berita->id]) }}" method="POST" enctype="multipart/form-data" class="pb-2">
         @csrf
         @method('PUT')
         <div class="mt-4">

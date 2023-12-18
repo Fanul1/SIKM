@@ -8,7 +8,7 @@
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Kontak UKM</h2>
         <h6 class="text-gray-900 dark:text-white text-end">* Wajib diisi</h6>
         <hr>
-        <form action="{{ route('updatekontakukm') }}" method="POST">
+        <form action="{{ route('updatekontakukm') }}" method="POST" class="pb-5">
             @csrf
             @method('PUT') <!-- Gunakan PUT method untuk mengirim data perubahan -->
             <div class="mt-4">
@@ -33,11 +33,11 @@
             </div>
             <div class="mt-4">
                 <label for="facebook" class="block text-sm font-medium text-gray-900 dark:text-white">Facebook Account</label>
-                <input type="text" name="facebook" id="facebook" class="block w-full px-4 py-2 text-gray-900 border border-gray-300 rounded-lg dark:text-white bg-gray-50 dark:bg-gray-700 dark:border-gray-600 focus:ring-primary-600 focus:border-primary-600 focus:outline-none" placeholder="Opsional" value="{{ $ukm->youtube }}">
+                <input type="text" name="facebook" id="facebook" class="block w-full px-4 py-2 text-gray-900 border border-gray-300 rounded-lg dark:text-white bg-gray-50 dark:bg-gray-700 dark:border-gray-600 focus:ring-primary-600 focus:border-primary-600 focus:outline-none" placeholder="Opsional" value="{{ $ukm->facebook }}">
             </div>
             <div class="mt-4">
                 <label for="twitter" class="block text-sm font-medium text-gray-900 dark:text-white">Twitter Account</label>
-                <input type="text" name="twitter" id="twitter" class="block w-full px-4 py-2 text-gray-900 border border-gray-300 rounded-lg dark:text-white bg-gray-50 dark:bg-gray-700 dark:border-gray-600 focus:ring-primary-600 focus:border-primary-600 focus:outline-none" placeholder="Opsional" value="{{ $ukm->youtube }}">
+                <input type="text" name="twitter" id="twitter" class="block w-full px-4 py-2 text-gray-900 border border-gray-300 rounded-lg dark:text-white bg-gray-50 dark:bg-gray-700 dark:border-gray-600 focus:ring-primary-600 focus:border-primary-600 focus:outline-none" placeholder="Opsional" value="{{ $ukm->twitter }}">
             </div>
             <div class="mt-6">
                 <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:ring-green-200 focus:outline-none">Simpan</button>

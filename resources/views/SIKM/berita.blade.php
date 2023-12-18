@@ -103,7 +103,7 @@
         </div>
         <div id="description" class="w-full max-w-6xl p-4 mx-auto mb-16 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:mb-0">
             <div class="flex items-center mb-6">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (23).jpg" class="h-8 mr-2 rounded-full" alt="avatar" loading="lazy" />
+                <img src="{{ asset('storage/' . $ukm->ukm_logo) }}" class="h-8 mr-2 rounded-full" alt="avatar" loading="lazy" />
                 <div>
                     <span> Published <u>{{ $berita->tanggal }}</u> by </span>
                     <a href="#!" class="font-medium">{{ $ukm->name }}</a>

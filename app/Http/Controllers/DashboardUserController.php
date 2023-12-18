@@ -139,25 +139,25 @@ class DashboardUserController extends Controller
             'tanggal' => 'required|date',
             'gambar.*' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
-    
+
         $berita = Berita::find($id);
-    
+
         if (!$berita) {
             return redirect()->back()->with('error', 'Berita not found');
         }
-    
+
         // Update the fields from the request
         $berita->judul = $request->input('judul');
         $berita->category = $request->input('category');
         $berita->deskripsi = $request->input('deskripsi');
         $berita->tanggal = $request->input('tanggal');
-    
+
         // If new images are uploaded, update the images
         if ($request->hasFile('gambar')) {
             $this->validate($request, [
                 'gambar.*' => 'image|mimes:jpeg,png,jpg,gif',
             ]);
-    
+
             // Delete existing images
             if (!is_null($berita->gambar)) {
                 $existingImages = json_decode($berita->gambar, true);
@@ -172,21 +172,21 @@ class DashboardUserController extends Controller
                     Storage::disk('public')->delete($berita->gambar);
                 }
             }
-    
+
             // Save new images
             $gambarPaths = [];
             foreach ($request->file('gambar') as $image) {
                 $gambarPath = $image->store('ukm_berita', 'public');
                 $gambarPaths[] = $gambarPath;
             }
-    
-            $berita->gambar = json_encode($gambarPaths);
+
+            $berita->gambar = count($gambarPaths) > 1 ? json_encode($gambarPaths) : $gambarPaths[0];
         }
-    
+
         $berita->save();
-    
+
         return redirect()->route('berita.detail', ['id' => $berita->id])->with('success', 'Berita updated successfully');
-    }    
+    }
 
     public function deleteBerita($id)
     {
@@ -206,11 +206,11 @@ class DashboardUserController extends Controller
             'gambar.*' => 'required|image|mimes:jpeg,png,jpg,gif',
             'tanggal' => 'required|date',
         ]);
-    
+
         $ukmId = auth()->user()->ukm->id;
-    
+
         $gambarPaths = [];
-    
+
         // Simpan gambar
         if ($request->hasFile('gambar')) {
             foreach ($request->file('gambar') as $image) {
@@ -218,16 +218,16 @@ class DashboardUserController extends Controller
                 $gambarPaths[] = $gambarPath;
             }
         }
-    
+
         $berita = new Berita();
         $berita->ukm_id = $ukmId;
         $berita->judul = $request->judul;
         $berita->category = $request->category;
         $berita->deskripsi = $request->deskripsi;
-        $berita->gambar = json_encode($gambarPaths); // Store paths as JSON array
+        $berita->gambar = count($gambarPaths) > 1 ? json_encode($gambarPaths) : $gambarPaths[0];
         $berita->tanggal = $request->tanggal;
         $berita->save();
-    
+
         return redirect('/editberitaukm')->with('success', 'Berita berhasil ditambahkan');
     }
 
@@ -331,11 +331,22 @@ class DashboardUserController extends Controller
     public function withdrawUkm($id)
     {
         $ukm = Ukm::find($id);
-        $ukm->status = 'Belum Dipublish';
-        $ukm->save();
-        $ukm = Berita::find($id);
-        $ukm->status = 'Belum Dipublish';
-        $ukm->save();
+
+        if ($ukm) {
+            $ukm->status = 'Belum Dipublish';
+            $ukm->save();
+        } else {
+            return redirect()->back()->with('error', 'UKM tidak ditemukan.');
+        }
+
+        $berita = Berita::where('ukm_id', $id)->first();
+
+        if ($berita) {
+            $berita->status = 'Belum Dipublish';
+            $berita->save();
+        } else {
+            return redirect()->back()->with('success', 'UKM berhasil ditarik.');
+        }
 
         return redirect()->back()->with('success', 'UKM berhasil ditarik.');
     }

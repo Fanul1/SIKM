@@ -67,6 +67,9 @@
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $berita->judul }}</h5>
                             </a>
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ strtok($berita->deskripsi, '.?!') }}</p>
+                            <div class="flex justify-center">
+                                <a href="{{ route('sikm.berita', ['id' => $berita->id]) }}" class="px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:underline">Lihat lebih banyak</a>
+                            </div>
                         </div>
                     </div>
                 @endif
